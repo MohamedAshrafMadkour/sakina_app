@@ -1,8 +1,91 @@
 import 'package:flutter/widgets.dart';
 import 'package:sakina_app/core/constants/styles/size_config.dart';
 
-abstract class Styles {
-  double getResponsiveFontSize(
+abstract class AppStyles {
+  static TextStyle textMedium36(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 36),
+      fontWeight: FontWeight.w500,
+      height: 1.11,
+      letterSpacing: 0.90,
+    );
+  }
+
+  static TextStyle textRegular12(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontWeight: FontWeight.w400,
+      height: 1.33,
+    );
+  }
+
+  static TextStyle textMedium30(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 30),
+      fontWeight: FontWeight.w500,
+      height: 1.20,
+    );
+  }
+
+  static TextStyle textMedium18(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontWeight: FontWeight.w500,
+      height: 1.56,
+    );
+  }
+
+  static TextStyle textMedium16(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w500,
+      height: 1.50,
+    );
+  }
+
+  static TextStyle textMedium20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w500,
+      height: 1.40,
+    );
+  }
+
+  static TextStyle textRegular20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'Amiri',
+      fontWeight: FontWeight.w400,
+      height: 2,
+    );
+  }
+
+  static TextStyle textRegular14(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w400,
+      height: 1.43,
+    );
+  }
+
+  static TextStyle textRegular16(BuildContext context) {
+    return TextStyle(
+      color: const Color(0xFF6B6B6B),
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w400,
+      height: 1.50,
+    );
+  }
+
+  static TextStyle textRegular18(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontWeight: FontWeight.w400,
+      height: 1.63,
+    );
+  }
+
+  static double getResponsiveFontSize(
     BuildContext context, {
     required double fontSize,
   }) {
@@ -14,7 +97,7 @@ abstract class Styles {
     return responsiveSize.clamp(lowerFont, upperFont);
   }
 
-  double getScaleFactor(context) {
+  static double getScaleFactor(context) {
     final width = MediaQuery.sizeOf(context).width;
     if (width < SizeConfig.tablet) {
       return width / 1100;
