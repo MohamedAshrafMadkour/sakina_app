@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/features/azkar/data/models/counter_model.dart';
-import 'package:sakina_app/features/azkar/presentation/views/widgets/appbar_header.dart'
-    show AppbarHeader;
-import 'package:sakina_app/features/azkar/presentation/views/widgets/counter_listview.dart';
+import 'package:sakina_app/features/azkar/presentation/views/widgets/appbar_header.dart';
+import 'package:sakina_app/features/azkar/presentation/views/widgets/counter_row.dart';
 
 class CustomAppbar extends StatelessWidget {
   CustomAppbar({super.key});
   final List<CounterModel> items = [
-    CounterModel(count: 0, title: 'المفضله'),
-    CounterModel(count: 0, title: 'مكتملة اليوم'),
-    CounterModel(count: 6, title: 'الفئات'),
+    CounterModel(count: 0, title: "المفضله"),
+    CounterModel(count: 0, title: "مكتملة اليوم"),
+    CounterModel(count: 6, title: "الفئات"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class CustomAppbar extends StatelessWidget {
 
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: const [
+          colors: [
             LightAppColors.appbarBackground1,
             LightAppColors.appbarBackground2,
           ],

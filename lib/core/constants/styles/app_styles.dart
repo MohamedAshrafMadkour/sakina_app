@@ -33,6 +33,7 @@ abstract class AppStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 18),
       fontWeight: FontWeight.w500,
       height: 1.56,
+      color: Colors.white,
     );
   }
 

@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:sakina_app/features/azkar/data/models/category_model.dart';
+import 'package:sakina_app/features/azkar/presentation/views/widgets/category_item.dart';
+
+class CategoryGirdView extends StatelessWidget {
+  const CategoryGirdView({required this.items, super.key});
+  final List<CategoryModel> items;
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      itemCount: items.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        childAspectRatio: 1.291666666666667,
+        crossAxisCount: 2,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+      ),
+      itemBuilder: (context, index) {
+        return CategoryItem(
+          categoryModel: items[index],
+        );
+      },
+    );
+  }
+}
