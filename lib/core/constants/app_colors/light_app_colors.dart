@@ -16,4 +16,7 @@ abstract class LightAppColors {
   static const Color greyColorE8 = Color(0xFFE8E6E1);
   static const Color blackColor190 = Color(0x190C7E5E);
   static const Color blackColor19D = Color(0x19D3AF37);
+
+  static const Color appbarBackground1 = Color(0xff2C7B5D);
+  static const Color appbarBackground2 = Color(0xff216148);
 }

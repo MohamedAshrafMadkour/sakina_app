@@ -58,7 +58,8 @@ Future<void> main() async {
             create: (context) => getIt.get<LanguageCubit>(),
           ),
         ],
-        child: DevicePreview(builder: (context) => const SakinaApp()),
+        //   child: DevicePreview(builder: (context) => const SakinaApp()),
+        child: SakinaApp(),
       ),
     );
   }

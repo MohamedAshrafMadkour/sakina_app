@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sakina_app/core/constants/styles/size_config.dart';
 
@@ -51,6 +52,15 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle textMedium24(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontWeight: FontWeight.w500,
+      height: 1.40,
+      color: Colors.white,
+    );
+  }
+
   static TextStyle textRegular20(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
@@ -65,6 +75,7 @@ abstract class AppStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w400,
       height: 1.43,
+      color: Colors.white,
     );
   }
 
@@ -82,6 +93,12 @@ abstract class AppStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 18),
       fontWeight: FontWeight.w400,
       height: 1.63,
+    );
+  }
+
+  static TextStyle imogiStyle(BuildContext context) {
+    return TextStyle(
+      fontSize: 25,
     );
   }
 
