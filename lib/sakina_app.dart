@@ -7,7 +7,6 @@ import 'package:sakina_app/core/extensions/language_ext.dart';
 import 'package:sakina_app/core/manager/language_cubit/language_cubit.dart';
 import 'package:sakina_app/core/manager/theme_hydrated_cubit.dart';
 import 'package:sakina_app/core/utils/on_generate_route.dart';
-import 'package:sakina_app/features/azkar/presentation/views/azkar_view.dart';
 import 'package:sakina_app/l10n/app_localizations.dart';
 
 class SakinaApp extends StatelessWidget {

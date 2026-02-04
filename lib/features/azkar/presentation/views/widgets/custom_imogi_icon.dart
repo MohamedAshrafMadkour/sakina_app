@@ -13,7 +13,7 @@ class customImogiIcon extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: Text(
-        "🤲",
+        '🤲',
         style: AppStyles.imogiStyle(context),
       ),
     );
