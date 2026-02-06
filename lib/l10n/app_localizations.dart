@@ -7,8 +7,6 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
-import 'app_localizations_fr.dart';
-import 'app_localizations_ur.dart';
 
 // ignore_for_file: type=lint
 
@@ -64,8 +62,7 @@ import 'app_localizations_ur.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -73,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -86,20 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en'),
-    Locale('ur'),
-    Locale('fr'),
+    Locale('en')
   ];
 
   /// No description provided for @splashViewTitle.
@@ -111,7 +104,7 @@ abstract class AppLocalizations {
   /// No description provided for @splashViewSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'﴿ Recite the Quran with measured recitation ﴾'**
+  /// **'Recite the Quran with tartil'**
   String get splashViewSubTitle;
 
   /// No description provided for @splashViewDesc.
@@ -129,7 +122,7 @@ abstract class AppLocalizations {
   /// No description provided for @firstOnBoardingSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Read the Quran in a clear font with beautiful design and listen to recitations'**
+  /// **'Read the Quran clearly with beautiful design and listen to recitations'**
   String get firstOnBoardingSubTitle;
 
   /// No description provided for @secondOnBoardingTitle.
@@ -141,7 +134,7 @@ abstract class AppLocalizations {
   /// No description provided for @secondOnBoardingSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Accurate notifications for prayer times based on your location with adhan sound'**
+  /// **'Accurate notifications for prayer times according to your location with Adhan sound'**
   String get secondOnBoardingSubTitle;
 
   /// No description provided for @thirdOnBoardingTitle.
@@ -153,7 +146,7 @@ abstract class AppLocalizations {
   /// No description provided for @thirdOnBoardingSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Daily reminders, adhkar, tasbih, everything you need in your spiritual journey'**
+  /// **'Daily reminders, Azkar, Tasbeeh, everything you need in your spiritual journey'**
   String get thirdOnBoardingSubTitle;
 
   /// No description provided for @skipText.
@@ -201,43 +194,43 @@ abstract class AppLocalizations {
   /// No description provided for @identifyLocationTitle.
   ///
   /// In en, this message translates to:
-  /// **'Location Permission'**
+  /// **'Location'**
   String get identifyLocationTitle;
 
   /// No description provided for @identifyLocationSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'We need your location to calculate accurate prayer times and show nearby mosques'**
+  /// **'We need your location to calculate accurate prayer times'**
   String get identifyLocationSubTitle;
 
   /// No description provided for @firstLocationListTile.
   ///
   /// In en, this message translates to:
-  /// **'Accurate Prayer Times'**
+  /// **'Accurate prayer times'**
   String get firstLocationListTile;
 
   /// No description provided for @secondLocationListTile.
   ///
   /// In en, this message translates to:
-  /// **'Nearby Mosques'**
+  /// **'Nearby mosques'**
   String get secondLocationListTile;
 
   /// No description provided for @thirdLocationListTile.
   ///
   /// In en, this message translates to:
-  /// **'Protected Privacy'**
+  /// **'Privacy protected'**
   String get thirdLocationListTile;
 
   /// No description provided for @firstLocationListTileSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Calculated accurately based on your location'**
+  /// **'Calculated based on your location'**
   String get firstLocationListTileSubTitle;
 
   /// No description provided for @secondLocationListTileSubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Discover mosques around you'**
+  /// **'Discover nearby mosques'**
   String get secondLocationListTileSubTitle;
 
   /// No description provided for @thirdLocationListTileSubTitle.
@@ -249,24 +242,47 @@ abstract class AppLocalizations {
   /// No description provided for @selectionLocationButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Allow Location Access'**
+  /// **'Allow location access'**
   String get selectionLocationButtonText;
 
   /// No description provided for @selectionLocationSetting.
   ///
   /// In en, this message translates to:
-  /// **'You can change this setting later from settings'**
+  /// **'You can change this later in settings'**
   String get selectionLocationSetting;
 
   /// No description provided for @chooseLanguageSnackBar.
   ///
   /// In en, this message translates to:
-  /// **'Please choose your language'**
+  /// **'Please choose a language'**
   String get chooseLanguageSnackBar;
+
+  /// No description provided for @locationServicesDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Location services are disabled.'**
+  String get locationServicesDisabled;
+
+  /// No description provided for @locationPermissionsDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied.'**
+  String get locationPermissionsDenied;
+
+  /// No description provided for @locationPermissionsDeniedForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied permanently.'**
+  String get locationPermissionsDeniedForever;
+
+  /// No description provided for @failedToGetCurrentLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to get current location.'**
+  String get failedToGetCurrentLocation;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -275,30 +291,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['ar', 'en', 'fr', 'ur'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return AppLocalizationsAr();
-    case 'en':
-      return AppLocalizationsEn();
-    case 'fr':
-      return AppLocalizationsFr();
-    case 'ur':
-      return AppLocalizationsUr();
+    case 'ar': return AppLocalizationsAr();
+    case 'en': return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

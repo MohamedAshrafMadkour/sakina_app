@@ -27,5 +27,9 @@
       "thirdLocationListTileSubTitle":"بياناتك آمنة ومحمية",
       "selectionLocationButtonText":"السماح بالوصول للموقع",
       "selectionLocationSetting":"يمكنك تغيير هذا الإعداد لاحقًا من الإعدادات",
-     "chooseLanguageSnackBar": "يرجى اختيار اللغة"
+      "chooseLanguageSnackBar": "يرجى اختيار اللغة",
+      "locationServicesDisabled": "خدمات الموقع معطلة.",
+      "locationPermissionsDenied": "صلاحيات الموقع مرفوضة.",
+      "locationPermissionsDeniedForever": "صلاحيات الموقع مرفوضة بشكل دائم، لا يمكن طلبها.",
+      "failedToGetCurrentLocation": "فشل الحصول على الموقع الحالي."
 }

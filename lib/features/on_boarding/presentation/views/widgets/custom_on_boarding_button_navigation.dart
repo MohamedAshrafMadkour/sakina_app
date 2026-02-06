@@ -60,7 +60,7 @@ class CustomOnBoardingButtonNavigation extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    AppRoutes.languageSelectionView,
+                    AppRoutes.locationPermissionView,
                     (route) => false,
                   );
                 },

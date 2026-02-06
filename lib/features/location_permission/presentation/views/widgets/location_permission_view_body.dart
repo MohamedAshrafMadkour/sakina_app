@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/core/constants/app_images/app_icons/app_icons.dart';
-import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
+import 'package:sakina_app/core/utils/custom_snack_bar.dart';
 import 'package:sakina_app/core/widgets/app_background.dart';
 import 'package:sakina_app/core/widgets/custom_button.dart';
 import 'package:sakina_app/core/widgets/custom_image_container.dart';
+import 'package:sakina_app/features/location_permission/presentation/manager/cubit/location_cubit.dart';
 import 'package:sakina_app/features/location_permission/presentation/views/widgets/custom_location_list_view.dart';
 import 'package:sakina_app/l10n/app_localizations.dart';
 
@@ -57,22 +59,40 @@ class LocationPermissionViewBody extends StatelessWidget {
             SizedBox(height: 32),
             CustomLocationListView(),
             const SizedBox(height: 32),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: CustomButton(
-                style: AppStyles.textMedium18(context).copyWith(
-                  color: LightAppColors.whiteColor,
-                ),
-                title: locale.selectionLocationButtonText,
-                onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    AppRoutes.languageSelectionView,
-                    (route) => false,
-                  );
-                },
-              ),
+            BlocConsumer<LocationCubit, LocationState>(
+              listener: (context, state) {
+                if (state is LocationStateSuccess) {
+                  showCustomSnackBar(context, 'success');
+                }
+                if (state is LocationStateFailure) {
+                  showCustomSnackBar(context, state.error, isError: true);
+                }
+              },
+              builder: (context, state) {
+                return SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: state is LocationStateLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: LightAppColors.primaryColor,
+                          ),
+                        )
+                      : CustomButton(
+                          style: AppStyles.textMedium18(context).copyWith(
+                            color: LightAppColors.whiteColor,
+                          ),
+                          title: locale.selectionLocationButtonText,
+                          onPressed: () {
+                            BlocProvider.of<LocationCubit>(
+                              context,
+                            ).getLocation(
+                              context: context,
+                            );
+                          },
+                        ),
+                );
+              },
             ),
             const SizedBox(
               height: 26,

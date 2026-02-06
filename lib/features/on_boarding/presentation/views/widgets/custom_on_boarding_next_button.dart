@@ -22,7 +22,7 @@ class CustomOnBoardingNextButton extends StatelessWidget {
         if (value.value == 2) {
           Navigator.pushNamedAndRemoveUntil(
             context,
-            AppRoutes.languageSelectionView,
+            AppRoutes.locationPermissionView,
             (route) => false,
           );
         } else {
