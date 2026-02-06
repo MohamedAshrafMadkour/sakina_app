@@ -51,10 +51,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secondLanguage => 'الانجليزية';
 
   @override
-  String get thirdLanguage => 'فرنسية';
+  String get thirdLanguage => 'اردو';
 
   @override
-  String get fourthLanguage => 'اردو';
+  String get fourthLanguage => 'فرنسية';
 
   @override
   String get identifyLocationTitle => 'تحديد الموقع';
@@ -88,4 +88,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chooseLanguageSnackBar => 'يرجى اختيار اللغة';
+
+  @override
+  String get locationServicesDisabled => 'خدمات الموقع معطلة.';
+
+  @override
+  String get locationPermissionsDenied => 'صلاحيات الموقع مرفوضة.';
+
+  @override
+  String get locationPermissionsDeniedForever => 'صلاحيات الموقع مرفوضة بشكل دائم، لا يمكن طلبها.';
+
+  @override
+  String get failedToGetCurrentLocation => 'فشل الحصول على الموقع الحالي.';
 }

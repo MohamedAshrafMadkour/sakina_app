@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sakina_app/core/constants/keys.dart';
-import 'package:sakina_app/core/manager/language_cubit/language_cubit.dart';
 import 'package:sakina_app/core/manager/theme_hydrated_cubit.dart';
 import 'package:sakina_app/core/service/get_it_setup.dart';
 import 'package:sakina_app/sakina_app.dart';
@@ -20,7 +18,6 @@ Future<void> main() async {
     ),
   );
   getItSetup();
-
   if (kReleaseMode) {
     runZonedGuarded(
       () async {
@@ -30,15 +27,8 @@ Future<void> main() async {
           },
         );
         runApp(
-          MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => getIt.get<ThemeCubit>(),
-              ),
-              BlocProvider(
-                create: (context) => getIt.get<LanguageCubit>(),
-              ),
-            ],
+          BlocProvider(
+            create: (context) => getIt.get<ThemeCubit>(),
             child: const SakinaApp(),
           ),
         );
@@ -49,17 +39,8 @@ Future<void> main() async {
     );
   } else {
     runApp(
-      MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt.get<ThemeCubit>(),
-          ),
-          BlocProvider(
-            create: (context) => getIt.get<LanguageCubit>(),
-          ),
-        ],
-        child: DevicePreview(builder: (context) => const SakinaApp()),
-      ),
+      // child: DevicePreview(builder: (context) => const SakinaApp()),
+      const SakinaApp(),
     );
   }
 }

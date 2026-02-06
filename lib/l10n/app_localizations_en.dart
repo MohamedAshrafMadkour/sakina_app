@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashViewTitle => 'Al-Mushaf Al-Sharif';
 
   @override
-  String get splashViewSubTitle => '﴿ Recite the Quran with measured recitation ﴾';
+  String get splashViewSubTitle => 'Recite the Quran with tartil';
 
   @override
   String get splashViewDesc => 'Surah Al-Muzzammil - Verse 4';
@@ -21,19 +21,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get firstOnBoardingTitle => 'The Holy Quran';
 
   @override
-  String get firstOnBoardingSubTitle => 'Read the Quran in a clear font with beautiful design and listen to recitations';
+  String get firstOnBoardingSubTitle => 'Read the Quran clearly with beautiful design and listen to recitations';
 
   @override
   String get secondOnBoardingTitle => 'Prayer Times';
 
   @override
-  String get secondOnBoardingSubTitle => 'Accurate notifications for prayer times based on your location with adhan sound';
+  String get secondOnBoardingSubTitle => 'Accurate notifications for prayer times according to your location with Adhan sound';
 
   @override
   String get thirdOnBoardingTitle => 'Your Spiritual Companion';
 
   @override
-  String get thirdOnBoardingSubTitle => 'Daily reminders, adhkar, tasbih, everything you need in your spiritual journey';
+  String get thirdOnBoardingSubTitle => 'Daily reminders, Azkar, Tasbeeh, everything you need in your spiritual journey';
 
   @override
   String get skipText => 'Skip';
@@ -57,35 +57,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fourthLanguage => 'French';
 
   @override
-  String get identifyLocationTitle => 'Location Permission';
+  String get identifyLocationTitle => 'Location';
 
   @override
-  String get identifyLocationSubTitle => 'We need your location to calculate accurate prayer times and show nearby mosques';
+  String get identifyLocationSubTitle => 'We need your location to calculate accurate prayer times';
 
   @override
-  String get firstLocationListTile => 'Accurate Prayer Times';
+  String get firstLocationListTile => 'Accurate prayer times';
 
   @override
-  String get secondLocationListTile => 'Nearby Mosques';
+  String get secondLocationListTile => 'Nearby mosques';
 
   @override
-  String get thirdLocationListTile => 'Protected Privacy';
+  String get thirdLocationListTile => 'Privacy protected';
 
   @override
-  String get firstLocationListTileSubTitle => 'Calculated accurately based on your location';
+  String get firstLocationListTileSubTitle => 'Calculated based on your location';
 
   @override
-  String get secondLocationListTileSubTitle => 'Discover mosques around you';
+  String get secondLocationListTileSubTitle => 'Discover nearby mosques';
 
   @override
   String get thirdLocationListTileSubTitle => 'Your data is safe and protected';
 
   @override
-  String get selectionLocationButtonText => 'Allow Location Access';
+  String get selectionLocationButtonText => 'Allow location access';
 
   @override
-  String get selectionLocationSetting => 'You can change this setting later from settings';
+  String get selectionLocationSetting => 'You can change this later in settings';
 
   @override
-  String get chooseLanguageSnackBar => 'Please choose your language';
+  String get chooseLanguageSnackBar => 'Please choose a language';
+
+  @override
+  String get locationServicesDisabled => 'Location services are disabled.';
+
+  @override
+  String get locationPermissionsDenied => 'Location permission denied.';
+
+  @override
+  String get locationPermissionsDeniedForever => 'Location permission denied permanently.';
+
+  @override
+  String get failedToGetCurrentLocation => 'Failed to get current location.';
 }
