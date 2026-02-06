@@ -57,13 +57,7 @@ class CustomOnBoardingButtonNavigation extends StatelessWidget {
                 ],
               ),
               InkWell(
-                onTap: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    AppRoutes.languageSelectionView,
-                    (route) => false,
-                  );
-                },
+                onTap: () {},
                 child: Text(
                   locale.skipText,
                   style: AppStyles.textMedium16(

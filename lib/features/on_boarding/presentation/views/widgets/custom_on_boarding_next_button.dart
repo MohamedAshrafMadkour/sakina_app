@@ -20,11 +20,6 @@ class CustomOnBoardingNextButton extends StatelessWidget {
       title: locale.onBoardingButtonbuttonText,
       onPressed: () {
         if (value.value == 2) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            AppRoutes.languageSelectionView,
-            (route) => false,
-          );
         } else {
           pageController.animateToPage(
             value.value + 1,
