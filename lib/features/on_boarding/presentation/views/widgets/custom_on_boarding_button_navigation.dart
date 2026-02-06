@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
-import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/on_boarding/presentation/views/widgets/custom_arrow.dart';
 import 'package:sakina_app/features/on_boarding/presentation/views/widgets/custom_on_boarding_next_button.dart';
