@@ -37,6 +37,15 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle textMedium14(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w500,
+      height: 1.43,
+      color: const Color(0xFF6B6B6B),
+    );
+  }
+
   static TextStyle textMedium16(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),

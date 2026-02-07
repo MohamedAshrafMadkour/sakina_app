@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/features/azkar/data/models/category_model.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/category_item.dart';
 
@@ -16,8 +17,13 @@ class CategoryGirdView extends StatelessWidget {
         mainAxisSpacing: 12,
       ),
       itemBuilder: (context, index) {
-        return CategoryItem(
-          categoryModel: items[index],
+        return GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.azkarDetailsView);
+          },
+          child: CategoryItem(
+            categoryModel: items[index],
+          ),
         );
       },
     );

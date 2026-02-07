@@ -11,7 +11,7 @@ class AzkarViewBody extends StatelessWidget {
         Color(0xffFE9A00),
         Color(0xffD08700),
       ],
-      imogi: "🌅",
+      imogi: '🌅',
       title: "اذكار الصباح",
       subTitle: "5 ذكر",
     ),
@@ -68,6 +68,7 @@ class AzkarViewBody extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           CustomAppbar(),
+
           Positioned(
             top: MediaQuery.sizeOf(context).height * .18,
             left: 0,

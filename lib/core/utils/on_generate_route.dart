@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
+import 'package:sakina_app/features/azkar/presentation/views/azkar_details_view.dart';
 import 'package:sakina_app/features/azkar/presentation/views/azkar_view.dart';
 import 'package:sakina_app/features/language_selection/presentation/views/language_selection_view.dart';
 import 'package:sakina_app/features/location_permission/presentation/views/location_permission.dart';
@@ -18,6 +19,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const LocationPermissionView());
     case AppRoutes.azkarView:
       return MaterialPageRoute(builder: (_) => const AzkarView());
+    case AppRoutes.azkarDetailsView:
+      return MaterialPageRoute(builder: (_) => const AzkarDetailsView());
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

@@ -5,11 +5,12 @@ import 'package:sakina_app/features/azkar/presentation/views/widgets/appbar_head
 import 'package:sakina_app/features/azkar/presentation/views/widgets/counter_row.dart';
 
 class CustomAppbar extends StatelessWidget {
-  CustomAppbar({super.key});
+  CustomAppbar({super.key, this.sizedBox = true});
+  final bool sizedBox;
   final List<CounterModel> items = [
-    CounterModel(count: 0, title: "المفضله"),
-    CounterModel(count: 0, title: "مكتملة اليوم"),
-    CounterModel(count: 6, title: "الفئات"),
+    CounterModel(count: 6, title: 'الفئات'),
+    CounterModel(count: 0, title: 'مكتملة اليوم'),
+    CounterModel(count: 0, title: 'المفضله'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CustomAppbar extends StatelessWidget {
 
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
+          colors: const [
             LightAppColors.appbarBackground1,
             LightAppColors.appbarBackground2,
           ],
@@ -38,9 +39,13 @@ class CustomAppbar extends StatelessWidget {
           CounterRow(
             items: items,
           ),
-          SizedBox(
-            height: 12,
-          ),
+          sizedBox
+              ? SizedBox(
+                  height: 12,
+                )
+              : SizedBox(
+                  height: 0,
+                ),
         ],
       ),
     );
