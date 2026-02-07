@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 
 class ZekrItemBottom extends StatelessWidget {
-  const ZekrItemBottom({super.key});
-
+  const ZekrItemBottom({required this.type1, required this.type2, super.key});
+  final String type1, type2;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,17 +13,17 @@ class ZekrItemBottom extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * .1209302325581395,
         ),
         Wrap(
-          children: const [
+          children: [
             CustomTypeContainer(
               backgroundColor: Color(0xFFD4AF37),
-              title: 'رواه مسلم',
+              title: type1,
             ),
             SizedBox(
               width: 8,
             ),
             CustomTypeContainer(
               backgroundColor: Colors.white,
-              title: 'حفظ من شر اليوم',
+              title: type2,
               borderColor: Color(0x1E0D7E5E),
             ),
           ],

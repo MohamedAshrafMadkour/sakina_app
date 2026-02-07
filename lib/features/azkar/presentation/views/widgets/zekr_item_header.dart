@@ -3,7 +3,9 @@ import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/custom_fav_icon.dart';
 
 class ZekrItemHeader extends StatelessWidget {
-  const ZekrItemHeader({super.key});
+  const ZekrItemHeader({required this.count, required this.zekr, super.key});
+  final int count;
+  final String zekr;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ZekrItemHeader extends StatelessWidget {
             ),
           ),
           child: Text(
-            '1',
+            '$count',
             textAlign: TextAlign.right,
             style: TextStyle(
               color: Colors.white,
@@ -41,7 +43,7 @@ class ZekrItemHeader extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            'أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ',
+            '$zekr',
             maxLines: 2,
             textAlign: TextAlign.right,
             overflow: TextOverflow.clip,

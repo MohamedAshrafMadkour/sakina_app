@@ -7,6 +7,8 @@ class AzkarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF8F7F4),
+
       body: AzkarViewBody(),
     );
   }
