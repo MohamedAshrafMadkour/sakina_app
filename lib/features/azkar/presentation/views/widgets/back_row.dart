@@ -12,17 +12,22 @@ class BackRow extends StatelessWidget {
           padding: const EdgeInsets.all(
             10.0,
           ),
-          child: Icon(
-            Icons.arrow_back,
-            color: Color(0xff6B6B6B),
-            size: 16,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Color(0xff6B6B6B),
+              size: 16,
+            ),
           ),
         ),
         SizedBox(
           width: 6,
         ),
         Text(
-          "العودة للفئات",
+          'العودة للفئات',
           style: AppStyles.textMedium14(context),
         ),
       ],

@@ -37,12 +37,21 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle textMedium12(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontWeight: FontWeight.w500,
+      height: 1.33,
+      color: const Color(0xFF6B6B6B),
+    );
+  }
+
   static TextStyle textMedium14(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w500,
       height: 1.43,
-      color: const Color(0xFF6B6B6B),
+      color: const Color(0xFF1A1A1A),
     );
   }
 
@@ -100,10 +109,11 @@ abstract class AppStyles {
 
   static TextStyle textRegular16(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFF6B6B6B),
+      color: const Color(0xFF1A1A1A),
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontWeight: FontWeight.w400,
-      height: 1.50,
+      fontFamily: 'Cairo',
+      height: 1.63,
     );
   }
 

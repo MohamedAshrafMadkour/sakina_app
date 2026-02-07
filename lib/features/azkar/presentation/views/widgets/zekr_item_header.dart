@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/constants/styles/app_styles.dart';
+import 'package:sakina_app/features/azkar/presentation/views/widgets/custom_fav_icon.dart';
 
 class ZekrItemHeader extends StatelessWidget {
   const ZekrItemHeader({super.key});
@@ -6,6 +8,7 @@ class ZekrItemHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           alignment: Alignment.center,
@@ -15,7 +18,7 @@ class ZekrItemHeader extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment(0.00, 0.00),
               end: Alignment(1.00, 1.00),
-              colors: [const Color(0xFFFF8803), const Color(0xFFFD9900)],
+              colors: const [Color(0xFFFF8803), Color(0xFFFD9900)],
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -42,8 +45,13 @@ class ZekrItemHeader extends StatelessWidget {
             maxLines: 2,
             textAlign: TextAlign.right,
             overflow: TextOverflow.clip,
+            style: AppStyles.textRegular16(context),
           ),
         ),
+        SizedBox(
+          width: 15,
+        ),
+        CustomFavIcon(iconSize: 20),
       ],
     );
   }

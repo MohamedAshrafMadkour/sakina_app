@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/features/azkar/presentation/views/widgets/zekr_item_bottom.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/zekr_item_header.dart';
 
 class ZekrItem extends StatelessWidget {
@@ -20,8 +21,12 @@ class ZekrItem extends StatelessWidget {
         ),
       ),
       child: Column(
-        children: [
+        children: const [
           ZekrItemHeader(),
+          SizedBox(
+            height: 8,
+          ),
+          ZekrItemBottom(),
         ],
       ),
     );

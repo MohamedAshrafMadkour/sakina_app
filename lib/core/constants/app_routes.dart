@@ -4,5 +4,5 @@ abstract class AppRoutes {
   static const languageSelectionView = 'language_selection_view';
   static const locationPermissionView = 'location_permission_view';
   static const azkarView = 'azkar_view';
-  static const azkarDetailsView = "azkar_view_derails";
+  static const azkarDetailsView = 'azkar_view_derails';
 }
