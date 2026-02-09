@@ -1,4 +1,3 @@
-import 'package:sakina_app/features/Quran_learning/presentation/views/quran_learning_view.dart';
 
 abstract class AppRoutes {
   static const splashView = 'splash_view';

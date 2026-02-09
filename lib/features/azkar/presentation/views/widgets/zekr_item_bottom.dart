@@ -7,7 +7,6 @@ class ZekrItemBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
           width: MediaQuery.sizeOf(context).width * .1209302325581395,
@@ -53,7 +52,6 @@ class CustomTypeContainer extends StatelessWidget {
         color: backgroundColor,
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            width: 1,
             color: borderColor ?? backgroundColor,
           ),
           borderRadius: BorderRadius.circular(12),

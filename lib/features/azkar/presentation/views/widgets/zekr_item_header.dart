@@ -43,7 +43,7 @@ class ZekrItemHeader extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            '$zekr',
+            zekr,
             maxLines: 2,
             textAlign: TextAlign.right,
             overflow: TextOverflow.clip,

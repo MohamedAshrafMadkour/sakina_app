@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sakina_app/features/azkar/data/models/zekr_model.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/back_row.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/custom_appbar.dart';
-import 'package:sakina_app/features/azkar/presentation/views/widgets/zekr_item.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/zekr_list_view.dart';
 
 class AzkarDetailsViewBody extends StatelessWidget {

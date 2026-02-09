@@ -38,7 +38,7 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "تقدمك هذا الأسبوع",
+                    'تقدمك هذا الأسبوع',
                     style:
                         AppStyles.textRegular14(
                           context,
@@ -52,7 +52,7 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    "5 دروس",
+                    '5 دروس',
                     style: AppStyles.textMedium24(
                       context,
                     ).copyWith(color: const Color(0xFF1A1A1A), height: 1.33),
@@ -63,11 +63,11 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "78%",
+                    '78%',
                     style: AppStyles.textRegular30(context),
                   ),
                   Text(
-                    "مكتمل",
+                    'مكتمل',
                     style: AppStyles.textRegular14(context).copyWith(
                       color: const Color(0xFF6B6B6B),
                     ),

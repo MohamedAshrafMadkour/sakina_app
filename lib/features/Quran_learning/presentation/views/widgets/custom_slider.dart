@@ -16,7 +16,6 @@ class CustomSlider extends StatelessWidget {
         ),
         child: Slider(
           padding: EdgeInsets.zero,
-          min: 0,
           max: 100,
           value: 70,
           onChanged: (_) {},
