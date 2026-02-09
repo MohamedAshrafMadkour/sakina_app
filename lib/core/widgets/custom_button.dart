@@ -9,11 +9,13 @@ class CustomButton extends StatelessWidget {
     this.onPressed,
     this.style,
     this.borderRadius,
+    this.isLoading = false,
   });
   final String title;
   final void Function()? onPressed;
   final TextStyle? style;
   final double? borderRadius;
+  final bool? isLoading;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -26,15 +28,25 @@ class CustomButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style:
-            style ??
-            AppStyles.textMedium16(context).copyWith(
-              color: LightAppColors.whiteColor,
+      child: isLoading == true
+          ? SizedBox(
+              height: 30,
+              width: 30,
+              child: Center(
+                child: const CircularProgressIndicator(
+                  color: LightAppColors.whiteColor,
+                ),
+              ),
+            )
+          : Text(
+              title,
+              textAlign: TextAlign.center,
+              style:
+                  style ??
+                  AppStyles.textMedium16(context).copyWith(
+                    color: LightAppColors.whiteColor,
+                  ),
             ),
-      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/location_permission/data/models/location_model.dart';
 
@@ -10,28 +9,42 @@ class CustomLocationListTile extends StatelessWidget {
     super.key,
   });
   final LocationModel locationModel;
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
-      color: LightAppColors.whiteColor,
+      color: isDark
+          ? Color.fromRGBO(22, 32, 29, 1)
+          : Color.fromRGBO(255, 255, 255, 1),
       margin: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
         side: BorderSide(
           width: 2,
-          color: Colors.black.withValues(alpha: 0),
+          color: isDark
+              ? Color.fromRGBO(255, 255, 255, 0.1)
+              : Color.fromRGBO(0, 0, 0, 0),
         ),
-        borderRadius: BorderRadiusGeometry.circular(24),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: ListTile(
         leading: Container(
+          width: 48,
+          height: 48,
           decoration: ShapeDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.00, 0.00),
-              end: Alignment(1.00, 1.00),
-              colors: const [
-                LightAppColors.blackColor190,
-                LightAppColors.blackColor19D,
-              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: isDark
+                  ? [
+                      Color.fromRGBO(13, 126, 94, 0.25),
+                      Color.fromRGBO(13, 126, 94, 0),
+                    ]
+                  : [
+                      Color.fromRGBO(13, 126, 94, 1),
+                      Color.fromRGBO(0, 200, 140, 1),
+                    ],
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -42,23 +55,22 @@ class CustomLocationListTile extends StatelessWidget {
             child: SvgPicture.asset(
               locationModel.image,
               fit: BoxFit.fill,
+              colorFilter: isDark
+                  ? ColorFilter.mode(
+                      Color.fromRGBO(255, 255, 255, 1),
+                      BlendMode.srcIn,
+                    )
+                  : null,
             ),
           ),
         ),
         title: Text(
           locationModel.title,
-          style: AppStyles.textMedium16(
-            context,
-          ).copyWith(color: LightAppColors.blackColor1A),
+          style: AppStyles.textMedium16(context),
         ),
         subtitle: Text(
           locationModel.subTitle,
-          style:
-              AppStyles.textRegular12(
-                context,
-              ).copyWith(
-                color: LightAppColors.greyColor6B,
-              ),
+          style: AppStyles.textRegular12(context),
         ),
       ),
     );

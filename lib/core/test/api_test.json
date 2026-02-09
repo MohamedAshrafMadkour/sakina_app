@@ -1,0 +1,67 @@
+ [
+        {
+            "type": "node",
+            "id": 330166895,
+            "lat": 30.0481291,
+            "lon": 31.2547781,
+            "tags": {
+                "amenity": "place_of_worship",
+                "name": "القاضي يحي زين الدين الزيني",
+                "name:ar": "القاضي يحي زين الدين الزيني",
+                "name:en": "Judge Yehia Zein-Eddin El-zeiny Mosque",
+                "religion": "muslim"
+            }
+        },
+        {
+            "type": "node",
+            "id": 1235630543,
+            "lat": 30.0501018,
+            "lon": 31.2363677,
+            "tags": {
+                "addr:city:en": "Cairo",
+                "amenity": "place_of_worship",
+                "name": "مسجد الشيخ معروف",
+                "name:ar": "مسجد الشيخ معروف",
+                "name:en": "Al-Sheikh Maaruf Mosque",
+                "religion": "muslim"
+            }
+        },
+        {
+            "type": "node",
+            "id": 1241056213,
+            "lat": 30.0296360,
+            "lon": 31.2472506,
+            "tags": {
+                "amenity": "place_of_worship",
+                "name": "مسجد سلار و سنجر الجاولي",
+                "name:ar": "مسجد سلار و سنجر الجاولي",
+                "name:en": "Sangar and Salar Mosque",
+                "religion": "muslim"
+            }
+        },
+        {
+            "type": "node",
+            "id": 1241056217,
+            "lat": 30.0291620,
+            "lon": 31.2461257,
+            "tags": {
+                "amenity": "place_of_worship",
+                "name": "مسجد السلطان الأشرف قايتباي",
+                "name:ar": "مسجد السلطان الأشرف قايتباي",
+                "name:en": "Al-Sultan Al-Ashraf Qaytbay Mosque",
+                "religion": "muslim"
+            }
+        },
+        {
+            "type": "node",
+            "id": 7243445904,
+            "lat": 30.0434733,
+            "lon": 31.2547068,
+            "tags": {
+                "amenity": "place_of_worship",
+                "denomination": "sunni",
+                "name": "Mosque Of Al Maraa Fatima Shaqra",
+                "religion": "muslim"
+            }
+        }
+    ]
