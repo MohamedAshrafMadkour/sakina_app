@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
+import 'package:sakina_app/features/Quran_learning/presentation/views/quran_learning_view.dart';
 import 'package:sakina_app/features/azkar/presentation/views/azkar_details_view.dart';
 import 'package:sakina_app/features/azkar/presentation/views/azkar_view.dart';
 import 'package:sakina_app/features/language_selection/presentation/views/language_selection_view.dart';
@@ -21,6 +22,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const AzkarView());
     case AppRoutes.azkarDetailsView:
       return MaterialPageRoute(builder: (_) => const AzkarDetailsView());
+    case AppRoutes.quranLearningView:
+      return MaterialPageRoute(builder: (_) => const QuranLearningView());
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(
