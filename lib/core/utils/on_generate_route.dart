@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/features/location_permission/presentation/views/location_permission.dart';
-import 'package:sakina_app/features/nearby_mosques/presentation/view/nearby_mosques_view.dart';
 import 'package:sakina_app/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:sakina_app/features/qibla/presentation/view/qibla_view.dart';
 import 'package:sakina_app/features/settings/presentation/view/settings_view.dart';
