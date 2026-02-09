@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_section.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/continue_learning_section.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/quran_learning_view_header.dart';
 
@@ -15,6 +16,13 @@ class QuranLearningViewBody extends StatelessWidget {
           height: 24,
         ),
         ContinueLearningSection(),
+        SizedBox(
+          height: 26,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: AllCoursesSection(),
+        ),
       ],
     );
   }

@@ -93,7 +93,7 @@ class PlayIcon extends StatelessWidget {
         ),
       ),
       child: Icon(
-        Icons.play_arrow,
+        Icons.play_arrow_outlined,
         color: Color(0xff0D7E5E),
       ),
     );
