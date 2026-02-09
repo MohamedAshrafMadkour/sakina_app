@@ -1,53 +1,80 @@
+import 'dart:async';
 import 'dart:developer';
 
-import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:sakina_app/core/error/location_error.dart';
-import 'package:sakina_app/l10n/app_localizations.dart';
 
 class LocationService {
-  Future<Either<LocationFailure, Position>> getCurrentLocation({
-    required BuildContext context,
-  }) async {
-    final locale = AppLocalizations.of(context)!;
+  LocationService._internal();
+  static final LocationService _instance = LocationService._internal();
+  factory LocationService() => _instance;
 
+  final _locationController = StreamController<Position>.broadcast();
+  StreamSubscription<Position>? _subscription;
+
+  Stream<Position> get locationStream => _locationController.stream;
+
+  Future<bool> _checkPermissions() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return left(
-        LocationFailure(errorMessage: locale.locationServicesDisabled),
-      );
+      return false;
     }
 
     LocationPermission permission = await Geolocator.checkPermission();
-
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return left(
-          LocationFailure(
-            errorMessage: locale.locationPermissionsDenied,
-          ),
-        );
+        return false;
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      return left(
-        LocationFailure(
-          errorMessage: locale.locationPermissionsDeniedForever,
-        ),
-      );
+      return false;
+    }
+    return true;
+  }
+
+  Future<bool> startListening({int distanceFilter = 10}) async {
+    final hasPermission = await _checkPermissions();
+    if (!hasPermission) {
+      return false;
     }
 
-    try {
-      final position = await Geolocator.getCurrentPosition();
-      log('Current location: $position');
-      return right(position);
-    } catch (_) {
-      return left(
-        LocationFailure(errorMessage: locale.failedToGetCurrentLocation),
-      );
+    _subscription =
+        Geolocator.getPositionStream(
+          locationSettings: LocationSettings(
+            accuracy: LocationAccuracy.high,
+            distanceFilter: distanceFilter,
+          ),
+        ).listen(
+          (position) {
+            _locationController.add(position);
+            log('Location update: ${position.latitude}, ${position.longitude}');
+          },
+          onError: (error) {
+            _locationController.addError(error);
+          },
+        );
+
+    return true;
+  }
+
+  void stopListening() => _subscription?.cancel();
+
+  void dispose() {
+    _locationController.close();
+    _subscription?.cancel();
+  }
+
+  Future<Position?> getCurrentPosition() async {
+    final hasPermission = await _checkPermissions();
+    if (!hasPermission) {
+      return null;
     }
+
+    return await Geolocator.getCurrentPosition(
+      locationSettings: LocationSettings(
+        accuracy: LocationAccuracy.high,
+      ),
+    );
   }
 }

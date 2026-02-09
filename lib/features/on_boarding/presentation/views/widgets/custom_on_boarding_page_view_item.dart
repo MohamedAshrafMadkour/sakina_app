@@ -25,7 +25,6 @@ class CustomOnBoardingPageViewItem extends StatelessWidget {
               onBoardingModel.title,
               textAlign: TextAlign.center,
               style: AppStyles.textMedium36(context).copyWith(
-                color: LightAppColors.blackColor1A,
                 letterSpacing: -.90,
               ),
             ),
@@ -42,7 +41,7 @@ class CustomOnBoardingPageViewItem extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppStyles.textRegular18(
                 context,
-              ).copyWith(color: LightAppColors.greyColor6B),
+              ),
             ),
           ),
         ),
