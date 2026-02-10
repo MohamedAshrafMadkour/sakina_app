@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_section.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/continue_learning_section.dart';
+import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_message.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/quran_learning_view_header.dart';
 
 class QuranLearningViewBody extends StatelessWidget {
@@ -26,6 +27,18 @@ class QuranLearningViewBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: AllCoursesSection(),
+          ),
+        ),
+
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32),
+            child: CustomMessage(),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 60,
           ),
         ),
       ],

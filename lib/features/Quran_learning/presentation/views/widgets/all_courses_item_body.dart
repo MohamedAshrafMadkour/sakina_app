@@ -54,7 +54,7 @@ class AllCoursesItemBody extends StatelessWidget {
             ),
 
             Text(
-              '  ${allCoursesModel.time} دقيقة',
+              '  ${allCoursesModel.time.toStringAsFixed(0)} دقيقة',
               style: AppStyles.textRegular14(context).copyWith(
                 color: const Color(0xFF6B6B6B),
               ),
