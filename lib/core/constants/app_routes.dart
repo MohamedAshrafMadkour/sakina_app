@@ -1,4 +1,3 @@
-
 abstract class AppRoutes {
   static const splashView = 'splash_view';
   static const onBoardingView = 'on_boarding_view';
@@ -7,4 +6,5 @@ abstract class AppRoutes {
   static const azkarView = 'azkar_view';
   static const azkarDetailsView = 'azkar_view_derails';
   static const quranLearningView = 'quran_learning_view';
+  static const reminderView = 'reminder_view';
 }

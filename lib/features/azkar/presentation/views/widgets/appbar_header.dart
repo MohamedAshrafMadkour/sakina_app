@@ -37,7 +37,9 @@ class AppbarHeader extends StatelessWidget {
           ],
         ),
         Spacer(),
-        customImogiIcon(),
+        customImogiIcon(
+          imogi: '🤲',
+        ),
       ],
     );
   }
