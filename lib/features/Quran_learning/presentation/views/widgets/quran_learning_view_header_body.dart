@@ -79,7 +79,10 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          CustomSlider(),
+          CustomSlider(
+            max: 100,
+            value: 67,
+          ),
         ],
       ),
     );

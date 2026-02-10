@@ -8,20 +8,25 @@ class QuranLearningViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        QuranLearningViewHeader(),
-        SizedBox(
-          height: 24,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(child: QuranLearningViewHeader()),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 24,
+          ),
         ),
-        ContinueLearningSection(),
-        SizedBox(
-          height: 26,
+        SliverToBoxAdapter(child: ContinueLearningSection()),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 26,
+          ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: AllCoursesSection(),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: AllCoursesSection(),
+          ),
         ),
       ],
     );

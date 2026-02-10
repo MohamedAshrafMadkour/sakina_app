@@ -43,4 +43,5 @@ class AppIcons {
   static const String iconsFlag = "assets/icons/flag.svg";
 
   static const String iconsArrow = "assets/icons/Icon.svg";
+  static const String iconsLock = "assets/icons/lock.png";
 }

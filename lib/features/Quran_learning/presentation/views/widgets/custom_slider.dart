@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomSlider extends StatelessWidget {
   const CustomSlider({
+    required this.max,
+    required this.value,
     super.key,
   });
-
+  final double max, value;
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -16,8 +18,8 @@ class CustomSlider extends StatelessWidget {
         ),
         child: Slider(
           padding: EdgeInsets.zero,
-          max: 100,
-          value: 70,
+          max: max,
+          value: value,
           onChanged: (_) {},
           activeColor: const Color(0xff0D7E5E),
           inactiveColor: const Color(0xffC3DAD3),
