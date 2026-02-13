@@ -11,21 +11,24 @@ class ZekrItemBottom extends StatelessWidget {
         SizedBox(
           width: MediaQuery.sizeOf(context).width * .1209302325581395,
         ),
-        Wrap(
-          children: [
-            CustomTypeContainer(
-              backgroundColor: Color(0xFFD4AF37),
-              title: type1,
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            CustomTypeContainer(
-              backgroundColor: Colors.white,
-              title: type2,
-              borderColor: Color(0x1E0D7E5E),
-            ),
-          ],
+        Expanded(
+          child: Wrap(
+            runSpacing: 8,
+            spacing: 8,
+            alignment: WrapAlignment.start,
+            children: [
+              CustomTypeContainer(
+                backgroundColor: Color(0xFFD4AF37),
+                title: type1,
+              ),
+
+              CustomTypeContainer(
+                backgroundColor: Colors.white,
+                title: type2,
+                borderColor: Color(0x1E0D7E5E),
+              ),
+            ],
+          ),
         ),
       ],
     );

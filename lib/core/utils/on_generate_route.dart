@@ -6,6 +6,7 @@ import 'package:sakina_app/features/azkar/presentation/views/azkar_view.dart';
 import 'package:sakina_app/features/language_selection/presentation/views/language_selection_view.dart';
 import 'package:sakina_app/features/location_permission/presentation/views/location_permission.dart';
 import 'package:sakina_app/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:sakina_app/features/reminder/presentation/views/add_reminder_view.dart';
 import 'package:sakina_app/features/reminder/presentation/views/reminders_view.dart';
 import 'package:sakina_app/features/splash/presentation/view/splash_view.dart';
 
@@ -27,6 +28,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const QuranLearningView());
     case AppRoutes.reminderView:
       return MaterialPageRoute(builder: (_) => const RemindersView());
+    case AppRoutes.addReminderView:
+      return MaterialPageRoute(builder: (_) => const AddReminderView());
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

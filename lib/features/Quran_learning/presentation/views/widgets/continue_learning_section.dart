@@ -23,7 +23,7 @@ class ContinueLearningSection extends StatelessWidget {
           height: 16,
         ),
         SizedBox(
-          height: MediaQuery.sizeOf(context).height * .21,
+          height: MediaQuery.sizeOf(context).height * .22,
           child: Padding(
             padding: const EdgeInsets.only(right: 24.0),
             child: ContinueLearningListView(items: items),

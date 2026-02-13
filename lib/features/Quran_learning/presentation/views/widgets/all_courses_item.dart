@@ -9,57 +9,43 @@ class AllCoursesItem extends StatelessWidget {
   final AllCoursesModel allCoursesModel;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.only(top: 20, bottom: 20),
-          decoration: ShapeDecoration(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                width: 1,
-                color: const Color(0x1E0D7E5E),
-              ),
-              borderRadius: BorderRadius.circular(20),
+    return Opacity(
+      opacity: allCoursesModel.isLocked ? 0.6 : 1,
+      child: Container(
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1,
+              color: const Color(0x1E0D7E5E),
             ),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 20,
-              ),
-              (allCoursesModel.isLocked)
-                  ? LockedAllCoursePlayIcon()
-                  : unLockedAllCoursePlayIcon(),
-              SizedBox(
-                width: 16,
-              ),
-              Expanded(
-                child: AllCoursesItemBody(
-                  allCoursesModel: allCoursesModel,
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-            ],
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
-        if (allCoursesModel.isLocked)
-          Positioned.fill(
-            child: Container(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              decoration: ShapeDecoration(
-                color: Color.fromARGB(20, 0, 0, 0), // أسود باهت
-
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 20,
+            ),
+            (allCoursesModel.isLocked)
+                ? LockedAllCoursePlayIcon()
+                : unLockedAllCoursePlayIcon(),
+            SizedBox(
+              width: 16,
+            ),
+            Expanded(
+              child: AllCoursesItemBody(
+                allCoursesModel: allCoursesModel,
               ),
             ),
-          ),
-      ],
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

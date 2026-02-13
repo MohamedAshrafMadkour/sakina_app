@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_background_message.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/add_new_reminder_button.dart';
@@ -53,7 +54,11 @@ class ReminderViewBody extends StatelessWidget {
                   RemindersListView(
                     reminderItems: reminderList,
                   ),
-                  AddNewReminderButton(),
+                  AddNewReminderButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.addReminderView);
+                    },
+                  ),
                   SizedBox(
                     height: 16,
                   ),

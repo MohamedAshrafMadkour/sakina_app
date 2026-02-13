@@ -22,6 +22,7 @@ class ZekrItem extends StatelessWidget {
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ZekrItemHeader(
             count: zekrModel.count,
