@@ -107,6 +107,17 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle textSemiBold24(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontWeight: FontWeight.w600,
+      height: 1.33,
+      color: const Color(0xFF1A1A1A),
+
+      fontFamily: 'Cairo',
+    );
+  }
+
   static TextStyle textRegular30(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 30),
