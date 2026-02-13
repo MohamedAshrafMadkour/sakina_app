@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ReminderItemIcon extends StatelessWidget {
-  const ReminderItemIcon({required this.icon, super.key});
+  const ReminderItemIcon({
+    required this.colorsList,
+    required this.icon,
+    super.key,
+  });
   final IconData icon;
+  final List<Color> colorsList;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +17,7 @@ class ReminderItemIcon extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
+          colors: colorsList,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),

@@ -39,6 +39,7 @@ class _ReminderItemState extends State<ReminderItem> {
           children: [
             ReminderItemIcon(
               icon: widget.reminderModel.icon,
+              colorsList: widget.reminderModel.colors,
             ),
             SizedBox(
               width: 16,

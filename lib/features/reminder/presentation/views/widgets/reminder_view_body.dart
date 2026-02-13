@@ -14,25 +14,29 @@ class ReminderViewBody extends StatelessWidget {
       isEnabled: true,
       title: 'صدقة يومية',
       time: '12:00 م',
-      icon: Icons.favorite_outline,
+      iconCode: Icons.favorite_outline.codePoint,
+      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
     ),
     ReminderModel(
       isEnabled: true,
       title: 'صدقة يومية',
       time: '12:00 م',
-      icon: Icons.favorite_outline,
+      iconCode: Icons.favorite_outline.codePoint,
+      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
     ),
     ReminderModel(
       isEnabled: false,
       title: 'صدقة يومية',
       time: '12:00 م',
-      icon: Icons.favorite_outline,
+      iconCode: Icons.favorite_outline.codePoint,
+      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
     ),
     ReminderModel(
       isEnabled: false,
       title: 'صدقة يومية',
       time: '12:00 م',
-      icon: Icons.favorite_outline,
+      iconCode: Icons.favorite_outline.codePoint,
+      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
     ),
   ];
   @override
