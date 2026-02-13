@@ -5,6 +5,7 @@ import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_co
 import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_icon_grid_view.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/custom_text_field.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/morning_evening_dropdown.dart';
+import 'package:sakina_app/features/reminder/presentation/views/widgets/repeted_everyday.dart';
 
 class AddReminderViewBody extends StatelessWidget {
   const AddReminderViewBody({super.key});
@@ -83,6 +84,10 @@ class AddReminderViewBody extends StatelessWidget {
           height: 8,
         ),
         SizedBox(height: 50, child: ChoseColorListView()),
+        SizedBox(
+          height: 24,
+        ),
+        RepetedEveryday(),
       ],
     );
   }
