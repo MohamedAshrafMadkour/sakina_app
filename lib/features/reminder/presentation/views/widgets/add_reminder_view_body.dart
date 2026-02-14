@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/core/service/data_base_service.dart';
+import 'package:sakina_app/core/service/notification_service.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_color_list_view.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_icon_grid_view.dart';
@@ -30,19 +31,56 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
     const Color(0xFF0D7E5E),
     const Color(0xFF0A6349),
   ];
+  DateTime convertTimeStringToDateTime(String time) {
+    final now = DateTime.now();
 
-  void saveReminder() async {
+    final parts = time.split(":");
+
+    final hour = int.parse(parts[0]);
+    final minute = int.parse(parts[1]);
+
+    DateTime scheduled = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      hour,
+      minute,
+    );
+
+    // 👇 لو الوقت عدى النهارده، خليه بكرة
+    if (scheduled.isBefore(now)) {
+      scheduled = scheduled.add(const Duration(days: 1));
+    }
+
+    return scheduled;
+  }
+
+  Future<void> saveReminder() async {
     final reminder = ReminderModel(
       isEnabled: true,
       title: title,
-      time: time,
+      time: time, // دي "HH:mm"
       iconCode: selectedIcon.codePoint,
       colors: selectedColors,
       repeatedEveryday: repeatedEveryday,
     );
 
-    await DataBaseService.instance.addReminder(reminder);
-    log(reminder.toString());
+    final int id = await DataBaseService.instance.addReminder(reminder);
+
+    // تحويل الـ String لـ DateTime قبل الجدولة
+    final DateTime scheduledDateTime = convertTimeStringToDateTime(
+      reminder.time,
+    );
+
+    await NotificationService.instance.scheduleNotification(
+      id: id,
+      title: reminder.title,
+      body: "حان وقت التذكير",
+      scheduledTime: scheduledDateTime, // بقت DateTime دلوقتي
+      repeatedEveryday: reminder.repeatedEveryday,
+    );
+
+    log("Reminder saved & scheduled with id: $id at $scheduledDateTime");
     Navigator.pop(context);
   }
 

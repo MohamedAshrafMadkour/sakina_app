@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sakina_app/core/constants/app_images/app_icons/app_icons.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/core/service/data_base_service.dart';
+import 'package:sakina_app/core/service/notification_service.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_item_icon.dart';
 
@@ -15,6 +16,28 @@ class ReminderItem extends StatefulWidget {
 
 class _ReminderItemState extends State<ReminderItem> {
   bool isEnabled = true;
+  DateTime convertTimeStringToDateTime(String time) {
+    final now = DateTime.now();
+
+    final parts = time.split(":");
+
+    final hour = int.parse(parts[0]);
+    final minute = int.parse(parts[1]);
+
+    DateTime scheduled = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      hour,
+      minute,
+    );
+
+    if (scheduled.isBefore(now)) {
+      scheduled = scheduled.add(const Duration(days: 1));
+    }
+
+    return scheduled;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +95,45 @@ class _ReminderItemState extends State<ReminderItem> {
             Spacer(),
             CustomReminderSwitch(
               value: widget.reminderModel.isEnabled,
-              onChanged: (val) {
-                setState(() {
-                  widget.reminderModel.isEnabled = val;
-                  DataBaseService.instance.updateReminderEnabled(
-                    id: widget.reminderModel.id!,
-                    isEnabled: val,
-                  );
-                });
-              },
               rtl: true,
               width: 50,
+
+              onChanged: (value) async {
+                final int id = widget.reminderModel.id!;
+
+                // 👇 نحدث الـ UI فورًا
+                setState(() {
+                  widget.reminderModel.isEnabled = value;
+                });
+
+                // 👇 نحدث الـ DB
+                await DataBaseService.instance.updateReminderEnabled(
+                  id: id,
+                  isEnabled: value,
+                );
+
+                if (!value) {
+                  // 🔴 لو قفله → نلغي الإشعار
+                  await NotificationService
+                      .instance
+                      .flutterLocalNotificationsPlugin
+                      .cancel(id: id);
+                } else {
+                  // 🟢 لو فتحه → نعمل schedule من جديد
+
+                  final scheduledTime = convertTimeStringToDateTime(
+                    widget.reminderModel.time,
+                  );
+
+                  await NotificationService.instance.scheduleNotification(
+                    id: id,
+                    title: widget.reminderModel.title,
+                    body: "حان وقت التذكير",
+                    scheduledTime: scheduledTime,
+                    repeatedEveryday: widget.reminderModel.repeatedEveryday,
+                  );
+                }
+              },
             ),
           ],
         ),
@@ -100,7 +151,9 @@ class CustomReminderSwitch extends StatelessWidget {
   const CustomReminderSwitch({
     required this.rtl,
     required this.width,
-    required this.value, required this.onChanged, super.key,
+    required this.value,
+    required this.onChanged,
+    super.key,
   });
 
   @override

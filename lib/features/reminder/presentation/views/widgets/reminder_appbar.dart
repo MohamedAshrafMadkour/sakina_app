@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/service/notification_service.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_appbar_title.dart';
 
 class ReminderAppbar extends StatelessWidget {
@@ -29,9 +30,14 @@ class ReminderAppbar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(33554400),
               ),
             ),
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
+            child: GestureDetector(
+              onTap: () async {
+                NotificationService.instance.showInstantNotification();
+              },
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

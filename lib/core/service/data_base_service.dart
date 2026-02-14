@@ -58,18 +58,24 @@ $_reminderColumnRepeated INTEGER
     return database; // ✅ مهم جدًا
   }
 
-  Future<void> addReminder(ReminderModel reminder) async {
+  Future<int> addReminder(ReminderModel reminder) async {
     final db = await database;
 
-    await db.insert(_reminderTableName, {
-      _reminderColumnTitle: reminder.title,
-      _reminderColumnTime: reminder.time,
-      _reminderColumnIcon: reminder.iconCode,
-      _reminderColumnColors: jsonEncode(
-        reminder.colors.map((c) => c.value).toList(),
-      ),
-      _reminderColumnEnabled: reminder.isEnabled ? 1 : 0,
-    });
+    final int id = await db.insert(
+      _reminderTableName,
+      {
+        _reminderColumnTitle: reminder.title,
+        _reminderColumnTime: reminder.time,
+        _reminderColumnIcon: reminder.iconCode,
+        _reminderColumnColors: jsonEncode(
+          reminder.colors.map((c) => c.value).toList(),
+        ),
+        _reminderColumnEnabled: reminder.isEnabled ? 1 : 0,
+        _reminderColumnRepeated: reminder.repeatedEveryday ? 1 : 0,
+      },
+    );
+
+    return id; // 👈 ده المهم
   }
 
   Future<List<ReminderModel>> getAllReminders() async {
