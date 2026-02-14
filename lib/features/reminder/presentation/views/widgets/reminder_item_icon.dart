@@ -22,7 +22,7 @@ class ReminderItemIcon extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        shadows: [
+        shadows: const [
           BoxShadow(
             color: Color(0x19000000),
             blurRadius: 4,

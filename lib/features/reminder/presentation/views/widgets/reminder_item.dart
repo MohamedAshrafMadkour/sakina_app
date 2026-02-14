@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/core/constants/app_images/app_icons/app_icons.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
+import 'package:sakina_app/core/service/data_base_service.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_item_icon.dart';
 
 class ReminderItem extends StatefulWidget {
-  ReminderItem({required this.reminderModel, super.key});
+  const ReminderItem({required this.reminderModel, super.key});
   final ReminderModel reminderModel;
   @override
   State<ReminderItem> createState() => _ReminderItemState();
@@ -28,14 +28,12 @@ class _ReminderItemState extends State<ReminderItem> {
           color: Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              width: 1,
               color: const Color(0x1E0D7E5E),
             ),
             borderRadius: BorderRadius.circular(20),
           ),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ReminderItemIcon(
               icon: widget.reminderModel.icon,
@@ -74,13 +72,17 @@ class _ReminderItemState extends State<ReminderItem> {
             Spacer(),
             CustomReminderSwitch(
               value: widget.reminderModel.isEnabled,
-              rtl: false,
-              width: 48,
               onChanged: (val) {
                 setState(() {
                   widget.reminderModel.isEnabled = val;
+                  DataBaseService.instance.updateReminderEnabled(
+                    id: widget.reminderModel.id!,
+                    isEnabled: val,
+                  );
                 });
               },
+              rtl: true,
+              width: 50,
             ),
           ],
         ),
@@ -98,9 +100,7 @@ class CustomReminderSwitch extends StatelessWidget {
   const CustomReminderSwitch({
     required this.rtl,
     required this.width,
-    super.key,
-    required this.value,
-    required this.onChanged,
+    required this.value, required this.onChanged, super.key,
   });
 
   @override

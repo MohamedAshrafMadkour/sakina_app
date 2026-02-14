@@ -3,20 +3,20 @@ import 'dart:developer' show log;
 import 'package:path/path.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
 
 class DataBaseService {
   static final DataBaseService instance = DataBaseService._constructor();
 
   DataBaseService._constructor();
 
-  final String _reminderTableName = "reminders";
-  final String _reminderColumnID = "Id";
-  final String _reminderColumnTitle = "title";
-  final String _reminderColumnTime = "time";
-  final String _reminderColumnIcon = "icon";
-  final String _reminderColumnColors = "colors";
-  final String _reminderColumnEnabled = "enabled";
+  final String _reminderTableName = 'reminders';
+  final String _reminderColumnID = 'Id';
+  final String _reminderColumnTitle = 'title';
+  final String _reminderColumnTime = 'time';
+  final String _reminderColumnIcon = 'icon';
+  final String _reminderColumnColors = 'colors';
+  final String _reminderColumnEnabled = 'enabled';
+  final String _reminderColumnRepeated = 'repeatedEveryday';
 
   static Database? _db;
 
@@ -29,14 +29,14 @@ class DataBaseService {
 
   Future<Database> getDatabase() async {
     final databaseDirPath = await getDatabasesPath();
-    final databasePath = join(databaseDirPath, "master_db.db");
+    final databasePath = join(databaseDirPath, 'master_db.db');
 
     final database = await openDatabase(
       databasePath,
       version: 1,
 
       onOpen: (db) {
-        print("Database opened");
+        print('Database opened');
       },
 
       onCreate: (db, version) async {
@@ -47,7 +47,8 @@ class DataBaseService {
           $_reminderColumnTime TEXT NOT NULL,
           $_reminderColumnIcon INTEGER,
           $_reminderColumnColors TEXT,
-          $_reminderColumnEnabled INTEGER
+          $_reminderColumnEnabled INTEGER,
+$_reminderColumnRepeated INTEGER
 
         )
         ''');

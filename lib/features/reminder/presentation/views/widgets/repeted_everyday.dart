@@ -3,8 +3,8 @@ import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_item.dart';
 
 class RepetedEveryday extends StatefulWidget {
-  const RepetedEveryday({super.key});
-
+  const RepetedEveryday({required this.onChanged, super.key});
+  final void Function(bool) onChanged;
   @override
   State<RepetedEveryday> createState() => _RepetedEverydayState();
 }
@@ -35,6 +35,7 @@ class _RepetedEverydayState extends State<RepetedEveryday> {
             onChanged: (value) {
               repeted = value;
               setState(() {});
+              widget.onChanged(value);
             },
             rtl: true,
             width: 60,

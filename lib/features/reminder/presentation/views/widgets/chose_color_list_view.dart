@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_color_item.dart';
 
 class ChoseColorListView extends StatefulWidget {
-  const ChoseColorListView({super.key});
-
+  const ChoseColorListView({required this.onTap, super.key});
+  final void Function(List<Color> colors) onTap;
   @override
   State<ChoseColorListView> createState() => _ChoseColorListViewState();
 }
@@ -32,6 +32,7 @@ class _ChoseColorListViewState extends State<ChoseColorListView> {
               setState(() {
                 selectedIndex = index;
               });
+              widget.onTap(colors[index]);
             },
             child: SizedBox(
               width: (screenWidth - 40) / colors.length, // يقسم الشاشة عليهم

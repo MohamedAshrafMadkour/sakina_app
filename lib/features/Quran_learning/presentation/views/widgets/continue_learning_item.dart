@@ -8,8 +8,8 @@ class ContinueLearningItem extends StatelessWidget {
   final ContinueLearningModel continueLearningModel;
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
+    final double width = MediaQuery.sizeOf(context).width;
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(

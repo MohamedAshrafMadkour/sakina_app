@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 class AllCoursesModel {
   final String type;

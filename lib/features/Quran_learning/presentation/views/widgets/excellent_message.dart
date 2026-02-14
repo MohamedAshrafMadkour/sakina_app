@@ -18,7 +18,7 @@ class ExcellentMessage extends StatelessWidget {
           height: 16,
         ),
         Text(
-          "أحسنت!",
+          'أحسنت!',
           style: AppStyles.textMedium18(
             context,
           ).copyWith(color: Colors.black),
@@ -27,7 +27,7 @@ class ExcellentMessage extends StatelessWidget {
           height: 8,
         ),
         Text(
-          "لقد أكملت 23 درسًا هذا الشهر. استمر في التعلم لتحقيق أهدافك.",
+          'لقد أكملت 23 درسًا هذا الشهر. استمر في التعلم لتحقيق أهدافك.',
           style: AppStyles.textRegular14(context).copyWith(
             color: const Color(0xFF6B6B6B),
           ),

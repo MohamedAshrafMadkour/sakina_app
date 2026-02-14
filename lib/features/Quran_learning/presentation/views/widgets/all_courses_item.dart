@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sakina_app/core/constants/app_images/app_icons/app_icons.dart';
 import 'package:sakina_app/features/Quran_learning/data/models/all_courses_model.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_item_body.dart';
@@ -17,7 +16,6 @@ class AllCoursesItem extends StatelessWidget {
           color: Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              width: 1,
               color: const Color(0x1E0D7E5E),
             ),
             borderRadius: BorderRadius.circular(20),
@@ -62,7 +60,7 @@ class unLockedAllCoursePlayIcon extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: [const Color(0xFFD4AF37), const Color(0xFFC4941F)],
+          colors: const [Color(0xFFD4AF37), Color(0xFFC4941F)],
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),

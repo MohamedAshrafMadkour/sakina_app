@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class ReminderModel {
   final int? id; // 👈 مهم
+  bool repeatedEveryday;
 
   bool isEnabled;
   final String title;
@@ -11,19 +12,16 @@ class ReminderModel {
   final List<Color> colors; // ✅
 
   ReminderModel({
-    this.id,
-    required this.isEnabled,
-    required this.title,
-    required this.time,
-    required this.iconCode,
-    required this.colors,
+    required this.isEnabled, required this.title, required this.time, required this.iconCode, required this.colors, required this.repeatedEveryday, this.id,
   });
 
   // للتحويل إلى Map (للتخزين)
   Map<String, dynamic> toMap() {
     return {
       'Id': id,
-      'isEnabled': isEnabled ? 1 : 0,
+      'enabled': isEnabled ? 1 : 0,
+      'repeatedEveryday': repeatedEveryday ? 1 : 0, // 👈 جديد
+
       'title': title,
       'time': time,
       'icon': iconCode,
@@ -35,7 +33,9 @@ class ReminderModel {
   factory ReminderModel.fromMap(Map<String, dynamic> map) {
     return ReminderModel(
       id: map['Id'],
-      isEnabled: map['isEnabled'] == 1,
+      isEnabled: map['enabled'] == 1,
+      repeatedEveryday: map['repeatedEveryday'] == 1, // 👈 جديد
+
       title: map['title'],
       time: map['time'],
       iconCode: map['icon'],

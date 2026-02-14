@@ -1,45 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
+import 'package:sakina_app/core/service/data_base_service.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_background_message.dart';
 import 'package:sakina_app/features/reminder/data/models/reminder_model.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/add_new_reminder_button.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/advice_message.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_appbar.dart';
-import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_item.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminders_list_view.dart';
 
-class ReminderViewBody extends StatelessWidget {
-  ReminderViewBody({super.key});
-  List<ReminderModel> reminderList = [
-    ReminderModel(
-      isEnabled: true,
-      title: 'صدقة يومية',
-      time: '12:00 م',
-      iconCode: Icons.favorite_outline.codePoint,
-      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
-    ),
-    ReminderModel(
-      isEnabled: true,
-      title: 'صدقة يومية',
-      time: '12:00 م',
-      iconCode: Icons.favorite_outline.codePoint,
-      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
-    ),
-    ReminderModel(
-      isEnabled: false,
-      title: 'صدقة يومية',
-      time: '12:00 م',
-      iconCode: Icons.favorite_outline.codePoint,
-      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
-    ),
-    ReminderModel(
-      isEnabled: false,
-      title: 'صدقة يومية',
-      time: '12:00 م',
-      iconCode: Icons.favorite_outline.codePoint,
-      colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
-    ),
-  ];
+class ReminderViewBody extends StatefulWidget {
+  const ReminderViewBody({super.key});
+
+  @override
+  State<ReminderViewBody> createState() => _ReminderViewBodyState();
+}
+
+class _ReminderViewBodyState extends State<ReminderViewBody> {
+  List<ReminderModel> reminderList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadReminders();
+  }
+
+  void loadReminders() async {
+    final data = await DataBaseService.instance.getAllReminders();
+
+    setState(() {
+      reminderList = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,8 +47,13 @@ class ReminderViewBody extends StatelessWidget {
                     reminderItems: reminderList,
                   ),
                   AddNewReminderButton(
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.addReminderView);
+                    onTap: () async {
+                      await Navigator.pushNamed(
+                        context,
+                        AppRoutes.addReminderView,
+                      );
+
+                      loadReminders(); // 🔥 reload بعد الرجوع
                     },
                   ),
                   SizedBox(

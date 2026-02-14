@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/chose_icon_item.dart';
 
 class ChoseIconGridView extends StatefulWidget {
-  ChoseIconGridView({super.key});
-
+  const ChoseIconGridView({required this.onTap, super.key});
+  final void Function(IconData iconCode) onTap;
   @override
   State<ChoseIconGridView> createState() => _ChoseIconGridViewState();
 }
@@ -39,11 +39,13 @@ class _ChoseIconGridViewState extends State<ChoseIconGridView> {
         return GestureDetector(
           onTap: () {
             setState(() {
-              selectedIndex = index; // نخزن العنصر اللي اتضغط عليه
+              selectedIndex = index;
             });
+
+            widget.onTap(icons[index]);
           },
           child: ChoseIconItem(
-            isSelected: selectedIndex == index, // بس ده true
+            isSelected: selectedIndex == index,
             icon: icons[index],
           ),
         );

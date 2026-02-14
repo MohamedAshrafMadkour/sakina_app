@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sakina_app/core/constants/styles/app_styles.dart';
 
 class CustomBackgroundMessage extends StatelessWidget {
   const CustomBackgroundMessage({super.key, this.child});
@@ -12,7 +11,7 @@ class CustomBackgroundMessage extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: [const Color(0xFFF4E5C2), const Color(0xFFE8D7B0)],
+          colors: const [Color(0xFFF4E5C2), Color(0xFFE8D7B0)],
         ),
         shape: RoundedRectangleBorder(
           side: BorderSide(

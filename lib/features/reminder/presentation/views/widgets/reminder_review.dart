@@ -3,8 +3,16 @@ import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/reminder/presentation/views/widgets/reminder_item_icon.dart';
 
 class ReminderReview extends StatelessWidget {
-  const ReminderReview({super.key});
-
+  const ReminderReview({
+    required this.icon,
+    required this.time,
+    required this.title,
+    required this.colors,
+    super.key,
+  });
+  final String title, time;
+  final List<Color> colors;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,11 +21,10 @@ class ReminderReview extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: [const Color(0xFFE8F5F1), const Color(0xFFF4E5C2)],
+          colors: const [Color(0xFFE8F5F1), Color(0xFFF4E5C2)],
         ),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            width: 1,
             color: const Color(0x4C0C7E5E),
           ),
           borderRadius: BorderRadius.circular(20),
@@ -27,7 +34,7 @@ class ReminderReview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "معاينة التذكير",
+            'معاينة التذكير',
             style: AppStyles.textRegular12(context).copyWith(
               color: const Color(0xFF6B6B6B),
             ),
@@ -39,8 +46,8 @@ class ReminderReview extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ReminderItemIcon(
-                colorsList: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
-                icon: Icons.alarm,
+                colorsList: colors,
+                icon: icon,
               ),
               SizedBox(
                 width: 12,
@@ -50,7 +57,7 @@ class ReminderReview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'عنوان التذكير',
+                      title,
                       style: AppStyles.textRegular16(
                         context,
                       ).copyWith(height: 1.25),
@@ -62,7 +69,7 @@ class ReminderReview extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          '12:00 ص  ',
+                          '$time ',
                           style: AppStyles.textRegular12(context).copyWith(
                             color: const Color(0xFF6B6B6B),
                           ),

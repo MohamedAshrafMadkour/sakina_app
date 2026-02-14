@@ -19,10 +19,9 @@ class AdviceMessage extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "نصيحة",
+                'نصيحة',
                 style: AppStyles.textMedium18(
                   context,
                 ).copyWith(color: Colors.black),

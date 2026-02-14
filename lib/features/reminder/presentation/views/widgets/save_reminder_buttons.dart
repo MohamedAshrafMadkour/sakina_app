@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 
 class SaveReminderButtons extends StatelessWidget {
-  const SaveReminderButtons({super.key});
-
+  const SaveReminderButtons({required this.onTap, super.key});
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,7 +20,6 @@ class SaveReminderButtons extends StatelessWidget {
                 color: const Color(0xFFF8F7F4),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    width: 1,
                     color: const Color(0x1E0D7E5E),
                   ),
                   borderRadius: BorderRadius.circular(12),
@@ -38,7 +37,7 @@ class SaveReminderButtons extends StatelessWidget {
         ),
         Expanded(
           child: GestureDetector(
-            onTap: () {},
+            onTap: onTap,
             child: Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -46,7 +45,7 @@ class SaveReminderButtons extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment(0.50, 0.00),
                   end: Alignment(0.50, 1.00),
-                  colors: [const Color(0xFF0D7E5E), const Color(0xFF0A6349)],
+                  colors: const [Color(0xFF0D7E5E), Color(0xFF0A6349)],
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),

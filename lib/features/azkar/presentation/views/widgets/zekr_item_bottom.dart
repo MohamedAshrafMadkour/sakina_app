@@ -15,7 +15,6 @@ class ZekrItemBottom extends StatelessWidget {
           child: Wrap(
             runSpacing: 8,
             spacing: 8,
-            alignment: WrapAlignment.start,
             children: [
               CustomTypeContainer(
                 backgroundColor: Color(0xFFD4AF37),

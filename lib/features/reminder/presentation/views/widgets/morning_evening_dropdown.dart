@@ -8,7 +8,7 @@ class MorningEveningDropdown extends StatefulWidget {
 }
 
 class _MorningEveningDropdownState extends State<MorningEveningDropdown> {
-  final List<String> items = ["صباحًا", "مساءً"];
+  final List<String> items = ['صباحًا', 'مساءً'];
   int selectedIndex = 0;
 
   @override

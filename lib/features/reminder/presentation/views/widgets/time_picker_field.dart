@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TimePickerField extends StatefulWidget {
-  const TimePickerField({super.key});
-
+  const TimePickerField({required this.onTimeSelected, super.key});
+  final Function(TimeOfDay) onTimeSelected;
   @override
   State<TimePickerField> createState() => _TimePickerFieldState();
 }
@@ -20,9 +20,6 @@ class _TimePickerFieldState extends State<TimePickerField> {
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
               primary: Color(0xFF0A6349),
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
             ),
 
             timePickerTheme: const TimePickerThemeData(
@@ -48,6 +45,7 @@ class _TimePickerFieldState extends State<TimePickerField> {
       setState(() {
         selectedTime = picked;
       });
+      widget.onTimeSelected(picked);
     }
   }
 
@@ -102,7 +100,7 @@ class _TimePickerFieldState extends State<TimePickerField> {
               Text(
                 selectedTime != null
                     ? selectedTime!.format(context)
-                    : "اختر الوقت",
+                    : 'اختر الوقت',
                 style: TextStyle(
                   color: isSelected ? Colors.black : Colors.grey,
                   fontSize: 16,

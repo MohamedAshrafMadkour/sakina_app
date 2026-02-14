@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/features/Quran_learning/data/models/all_courses_model.dart';
-import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_item.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_list_view.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_title.dart';
 
