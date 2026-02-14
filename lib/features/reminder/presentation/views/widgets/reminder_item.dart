@@ -74,6 +74,8 @@ class _ReminderItemState extends State<ReminderItem> {
             Spacer(),
             CustomReminderSwitch(
               value: widget.reminderModel.isEnabled,
+              rtl: false,
+              width: 48,
               onChanged: (val) {
                 setState(() {
                   widget.reminderModel.isEnabled = val;
@@ -90,8 +92,12 @@ class _ReminderItemState extends State<ReminderItem> {
 class CustomReminderSwitch extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
+  final double width;
+  final bool rtl;
 
   const CustomReminderSwitch({
+    required this.rtl,
+    required this.width,
     super.key,
     required this.value,
     required this.onChanged,
@@ -103,7 +109,7 @@ class CustomReminderSwitch extends StatelessWidget {
       onTap: () => onChanged(!value),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
-        width: 48,
+        width: width,
         height: 30,
         padding: const EdgeInsets.all(3),
 
@@ -129,7 +135,9 @@ class CustomReminderSwitch extends StatelessWidget {
         ),
 
         child: Align(
-          alignment: value ? Alignment.centerRight : Alignment.centerLeft,
+          alignment: ((rtl) ? value : !value)
+              ? Alignment.centerRight
+              : Alignment.centerLeft,
 
           child: Container(
             width: 20,

@@ -3,11 +3,15 @@ import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({this.hint, super.key});
+  const CustomTextField({this.hint, super.key, this.onTap, this.readOnly});
   final String? hint;
+  final void Function()? onTap;
+  final bool? readOnly;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      readOnly: readOnly ?? false,
+      onTap: onTap,
       decoration: InputDecoration(
         hintText: hint,
         hintTextDirection: TextDirection.ltr,

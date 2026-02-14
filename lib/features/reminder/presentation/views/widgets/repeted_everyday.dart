@@ -36,6 +36,8 @@ class _RepetedEverydayState extends State<RepetedEveryday> {
               repeted = value;
               setState(() {});
             },
+            rtl: true,
+            width: 60,
           ),
         ],
       ),
