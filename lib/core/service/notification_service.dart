@@ -123,7 +123,7 @@ class NotificationService {
       ),
       payload: id.toString(),
       // نمط alarmClock هو الأدق في أندرويد لضمان العمل حتى في وضع توفير الطاقة
-      androidScheduleMode: AndroidScheduleMode.alarmClock,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: repeatedEveryday
           ? DateTimeComponents.time
           : null,

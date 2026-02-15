@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/core/service/data_base_service.dart';
@@ -150,7 +149,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
             height: 8,
           ),
           SizedBox(
-            height: MediaQuery.sizeOf(context).height * .122,
+            height: MediaQuery.sizeOf(context).height * .123,
             child: ChoseIconGridView(
               onTap: (IconData iconCode) {
                 setState(() {

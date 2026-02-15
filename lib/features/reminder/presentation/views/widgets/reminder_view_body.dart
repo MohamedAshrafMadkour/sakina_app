@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/core/service/data_base_service.dart';
@@ -59,8 +61,13 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                   SizedBox(
                     height: 16,
                   ),
-                  CustomBackgroundMessage(
-                    child: AdviceMessage(),
+                  GestureDetector(
+                    onTap: () {
+                      print(DateTime.now());
+                    },
+                    child: CustomBackgroundMessage(
+                      child: AdviceMessage(),
+                    ),
                   ),
                 ],
               ),

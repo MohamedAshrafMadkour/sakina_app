@@ -16,24 +16,34 @@ class SakinaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, themeState) {
-        return BlocBuilder<LanguageCubit, LanguageState>(
-          builder: (context, langState) {
-            return MaterialApp(
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-
-              locale: langState.locale.getLanguage(),
-
-              debugShowCheckedModeBanner: false,
-              onGenerateRoute: onGenerateRoute,
-              title: 'Sakina App',
-              theme: lightTheme(),
-              darkTheme: darkTheme(),
-              themeMode: themeState,
-              initialRoute: AppRoutes.reminderView,
-            );
-          },
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: onGenerateRoute,
+          title: 'Sakina App',
+          theme: lightTheme(),
+          darkTheme: darkTheme(),
+          themeMode: themeState,
+          initialRoute: AppRoutes.reminderView,
         );
+
+        // return BlocBuilder<LanguageCubit, LanguageState>(
+        //   builder: (context, langState) {
+        //     return MaterialApp(
+        //       localizationsDelegates: AppLocalizations.localizationsDelegates,
+        //       supportedLocales: AppLocalizations.supportedLocales,
+
+        //       locale: langState.locale.getLanguage(),
+
+        //       debugShowCheckedModeBanner: false,
+        //       onGenerateRoute: onGenerateRoute,
+        //       title: 'Sakina App',
+        //       theme: lightTheme(),
+        //       darkTheme: darkTheme(),
+        //       themeMode: themeState,
+        //       initialRoute: AppRoutes.reminderView,
+        //     );
+        //   },
+        // );
       },
     );
   }
