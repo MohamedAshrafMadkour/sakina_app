@@ -4,21 +4,32 @@ import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/features/Quran_learning/data/models/continue_learning_model.dart';
 
 class ContinueLearningItem extends StatelessWidget {
-  const ContinueLearningItem({required this.continueLearningModel, super.key});
+  const ContinueLearningItem({
+    required this.continueLearningModel,
+    super.key,
+  });
+
   final ContinueLearningModel continueLearningModel;
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final double height = MediaQuery.sizeOf(context).height;
     final double width = MediaQuery.sizeOf(context).width;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: EdgeInsets.only(bottom: 13),
+        padding: const EdgeInsets.only(bottom: 13),
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: isDark
+              ? const Color(0xFF242421) // كارد في الدارك
+              : Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: const Color(0x1E0D7E5E),
+              color: isDark
+                  ? const Color(0x1AFFFFFF) // border خفيف أبيض شفاف
+                  : const Color(0x1E0D7E5E),
             ),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -33,22 +44,27 @@ class ContinueLearningItem extends StatelessWidget {
                   AppImages.secionImage,
                   height: height * .1373390557939914,
                   width: width * .4255813953488372,
+                  fit: BoxFit.cover,
                 ),
+
+                // Gradient Overlay
                 Container(
                   height: height * .1373390557939914,
                   width: width * .4255813953488372,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment(0.50, 1.00),
-                      end: Alignment(0.50, 0.00),
+                      begin: const Alignment(0.50, 1.00),
+                      end: const Alignment(0.50, 0.00),
                       colors: [
-                        Colors.black.withValues(alpha: 0.60),
-                        Colors.black.withValues(alpha: 0),
+                        Colors.black.withOpacity(isDark ? 0.75 : 0.60),
+                        Colors.transparent,
                       ],
                     ),
                   ),
                 ),
-                PlayIcon(),
+
+                const PlayIcon(),
+
                 Positioned(
                   left: 0,
                   bottom: 0,
@@ -58,15 +74,17 @@ class ContinueLearningItem extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: height * .0386266094420601,
-            ),
+
+            SizedBox(height: height * .0386266094420601),
+
             Padding(
               padding: const EdgeInsets.only(right: 13.0),
               child: Text(
                 continueLearningModel.title,
                 style: AppStyles.textRegular14(context).copyWith(
-                  color: const Color(0xFF1A1A1A),
+                  color: isDark
+                      ? const Color(0xFFF2F2F0) // نص أبيض مريح
+                      : const Color(0xFF1A1A1A),
                 ),
               ),
             ),
@@ -82,17 +100,21 @@ class PlayIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: 48,
       height: 48,
       padding: const EdgeInsets.only(right: 4),
       decoration: ShapeDecoration(
-        color: Colors.white.withValues(alpha: 0.90),
+        color: isDark
+            ? const Color(0xFF2E2E2C) // رمادي غامق بدل الأبيض
+            : Colors.white.withOpacity(0.90),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(33554400),
+          borderRadius: BorderRadius.circular(999),
         ),
       ),
-      child: Icon(
+      child: const Icon(
         Icons.play_arrow_outlined,
         color: Color(0xff0D7E5E),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
-import 'package:sakina_app/core/widgets/custom_button.dart';
+import 'package:sakina_app/core/utils/widgets/custom_button.dart';
 import 'package:sakina_app/l10n/app_localizations.dart';
 
 class CustomOnBoardingNextButton extends StatelessWidget {

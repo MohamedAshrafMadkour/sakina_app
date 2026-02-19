@@ -6,9 +6,9 @@ import 'package:sakina_app/core/constants/styles/app_styles.dart';
 import 'package:sakina_app/core/enum/language_enum.dart';
 import 'package:sakina_app/core/manager/language_cubit/language_cubit.dart';
 import 'package:sakina_app/core/utils/custom_snack_bar.dart';
-import 'package:sakina_app/core/widgets/app_background.dart';
-import 'package:sakina_app/core/widgets/custom_button.dart';
-import 'package:sakina_app/core/widgets/custom_image_container.dart';
+import 'package:sakina_app/core/utils/widgets/app_background.dart';
+import 'package:sakina_app/core/utils/widgets/custom_button.dart';
+import 'package:sakina_app/core/utils/widgets/custom_image_container.dart';
 import 'package:sakina_app/features/language_selection/presentation/views/widgets/custom_selection_language_list_tile.dart';
 import 'package:sakina_app/l10n/app_localizations.dart';
 

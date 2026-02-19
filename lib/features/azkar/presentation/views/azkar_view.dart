@@ -6,10 +6,15 @@ class AzkarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffF8F7F4),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-      body: AzkarViewBody(),
+    return Scaffold(
+      backgroundColor: isDark ? Color(0xff1C1C1A) : Color(0xffF8F7F4),
+
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: AzkarViewBody(),
+      ),
     );
   }
 }

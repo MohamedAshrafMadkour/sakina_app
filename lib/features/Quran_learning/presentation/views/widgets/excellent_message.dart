@@ -9,27 +9,33 @@ class ExcellentMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       children: [
-        CustomBackgroundIcon(
+        const CustomBackgroundIcon(
           icon: Icons.star,
         ),
-        SizedBox(
-          height: 16,
-        ),
+        const SizedBox(height: 16),
+
         Text(
           'أحسنت!',
-          style: AppStyles.textMedium18(
-            context,
-          ).copyWith(color: Colors.black),
+          style: AppStyles.textMedium18(context).copyWith(
+            color: isDark
+                ? const Color(0xFFF2F2F0) // أبيض مريح
+                : Colors.black,
+          ),
         ),
-        SizedBox(
-          height: 8,
-        ),
+
+        const SizedBox(height: 8),
+
         Text(
           'لقد أكملت 23 درسًا هذا الشهر. استمر في التعلم لتحقيق أهدافك.',
+          textAlign: TextAlign.center,
           style: AppStyles.textRegular14(context).copyWith(
-            color: const Color(0xFF6B6B6B),
+            color: isDark
+                ? const Color(0xFF9E9E9B) // رمادي فاتح للدارك
+                : const Color(0xFF6B6B6B),
           ),
         ),
       ],

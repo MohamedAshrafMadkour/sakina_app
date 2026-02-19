@@ -42,7 +42,7 @@ class CategoryItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      categoryModel.subTitle,
+                      ' ${categoryModel.subTitle.toStringAsFixed(0)}',
                       style: AppStyles.textRegular14(context),
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/constants/app_colors/dark_app_colors.dart';
 import 'package:sakina_app/core/service/notification_service.dart';
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/custom_appbar_title.dart';
 
@@ -7,6 +8,8 @@ class ReminderAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: double.infinity,
       height: 90,
@@ -15,7 +18,12 @@ class ReminderAppbar extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: const [Color(0xFF0D7E5E), Color(0xFF0A6349)],
+          colors: isDark
+              ? [
+                  DarkAppColors.darkAppbarBackground1,
+                  DarkAppColors.darkAppbarBackground2,
+                ]
+              : const [Color(0xFF0D7E5E), Color(0xFF0A6349)],
         ),
       ),
       child: Row(
@@ -36,7 +44,7 @@ class ReminderAppbar extends StatelessWidget {
               },
               child: Icon(
                 Icons.add,
-                color: Colors.white,
+                color: isDark ? Colors.black : Colors.white,
               ),
             ),
           ),

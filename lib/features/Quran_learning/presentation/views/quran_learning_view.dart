@@ -6,9 +6,16 @@ class QuranLearningView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffF8F7F4),
-      body: QuranLearningViewBody(),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: isDark
+            ? const Color(0xFF1C1C1A)
+            : const Color(0xFFF8F7F4),
+        body: const QuranLearningViewBody(),
+      ),
     );
   }
 }

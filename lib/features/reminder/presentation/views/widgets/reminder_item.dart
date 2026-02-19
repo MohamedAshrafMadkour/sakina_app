@@ -40,18 +40,24 @@ class _ReminderItemState extends State<ReminderItem> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Opacity(
       opacity: widget.reminderModel.isEnabled ? 1 : 0.6,
       child: Container(
         width: double.infinity,
-
         padding: const EdgeInsets.all(20),
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: isDark
+              ? const Color(0xFF242421) // Card Dark
+              : Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: const Color(0x1E0D7E5E),
+              color: isDark
+                  ? const Color(0x1AFFFFFF) // subtle border
+                  : const Color(0x1E0D7E5E),
             ),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -62,65 +68,67 @@ class _ReminderItemState extends State<ReminderItem> {
               icon: widget.reminderModel.icon,
               colorsList: widget.reminderModel.colors,
             ),
-            SizedBox(
-              width: 16,
-            ),
+
+            const SizedBox(width: 16),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.reminderModel.title,
-                  style: AppStyles.textMedium18(
-                    context,
-                  ).copyWith(color: Color(0xFF1A1A1A)),
+                  style: AppStyles.textMedium18(context).copyWith(
+                    color: isDark
+                        ? const Color(0xFFF2F2F0)
+                        : const Color(0xFF1A1A1A),
+                  ),
                 ),
 
                 Row(
                   children: [
                     SvgPicture.asset(
                       AppIcons.iconsTime,
-                      color: const Color(0xFF6B6B6B),
+                      color: isDark
+                          ? const Color(0xFF9E9E9B)
+                          : const Color(0xFF6B6B6B),
                       height: 12,
                     ),
                     Text(
                       '  ${widget.reminderModel.time}',
-                      style: AppStyles.textRegular14(
-                        context,
-                      ).copyWith(color: Color(0xFF6B6B6B)),
+                      style: AppStyles.textRegular14(context).copyWith(
+                        color: isDark
+                            ? const Color(0xFF9E9E9B)
+                            : const Color(0xFF6B6B6B),
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
-            Spacer(),
+
+            const Spacer(),
+
             CustomReminderSwitch(
               value: widget.reminderModel.isEnabled,
               rtl: true,
               width: 50,
-
               onChanged: (value) async {
                 final int id = widget.reminderModel.id!;
 
-                // 👇 نحدث الـ UI فورًا
                 setState(() {
                   widget.reminderModel.isEnabled = value;
                 });
 
-                // 👇 نحدث الـ DB
                 await DataBaseService.instance.updateReminderEnabled(
                   id: id,
                   isEnabled: value,
                 );
 
                 if (!value) {
-                  // 🔴 لو قفله → نلغي الإشعار
                   await NotificationService
                       .instance
                       .flutterLocalNotificationsPlugin
                       .cancel(id: id);
                 } else {
-                  // 🟢 لو فتحه → نعمل schedule من جديد
-
                   final scheduledTime = convertTimeStringToDateTime(
                     widget.reminderModel.time,
                   );
@@ -158,6 +166,8 @@ class CustomReminderSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return GestureDetector(
       onTap: () => onChanged(!value),
       child: AnimatedContainer(
@@ -165,44 +175,37 @@ class CustomReminderSwitch extends StatelessWidget {
         width: width,
         height: 30,
         padding: const EdgeInsets.all(3),
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-
-          // اللون
           color: value
               ? const Color(0xFF0D7E5E) // ON
-              : const Color(0xFFF5F5F5), // OFF
-          // Shadow
+              : (isDark
+                    ? const Color(0xFF2E2E2C) // OFF dark
+                    : const Color(0xFFF5F5F5)), // OFF light
           boxShadow: value
-              ? [] // مفيش shadow وهو شغال
+              ? []
               : [
-                  // شبه inner shadow
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.12),
+                    color: Colors.black.withOpacity(isDark ? 0.3 : 0.12),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                     spreadRadius: -2,
                   ),
                 ],
         ),
-
         child: Align(
           alignment: ((rtl) ? value : !value)
               ? Alignment.centerRight
               : Alignment.centerLeft,
-
           child: Container(
             width: 20,
             height: 20,
-
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withOpacity(0.2),
                   blurRadius: 4,
                 ),
               ],

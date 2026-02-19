@@ -10,7 +10,10 @@ class AddReminderView extends StatelessWidget {
       backgroundColor: Color(0xffF8F7F4),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: AddReminderViewBody(),
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: AddReminderViewBody(),
+        ),
       ),
     );
   }

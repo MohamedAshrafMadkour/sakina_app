@@ -3,5 +3,6 @@
         "dsnkey",
         "Sakina"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cmake.sourceDirectory": "D:/clone repo/azkar_app/sakina_app/linux/flutter"
 }

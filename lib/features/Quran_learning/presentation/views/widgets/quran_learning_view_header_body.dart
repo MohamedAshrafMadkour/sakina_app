@@ -7,27 +7,40 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: ShapeDecoration(
-        color: Colors.white.withValues(alpha: 0.95),
+        color: isDark
+            ? const Color(0xFF242421) // card لون أفتح سنة من الخلفية
+            : const Color(0xFFF8F7F4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 10,
-            offset: Offset(0, 8),
-            spreadRadius: -6,
-          ),
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 25,
-            offset: Offset(0, 20),
-            spreadRadius: -5,
-          ),
-        ],
+        shadows: isDark
+            ? [
+                const BoxShadow(
+                  color: Color(0x33000000),
+                  blurRadius: 20,
+                  offset: Offset(0, 10),
+                  spreadRadius: -5,
+                ),
+              ]
+            : const [
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 10,
+                  offset: Offset(0, 8),
+                  spreadRadius: -6,
+                ),
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 25,
+                  offset: Offset(0, 20),
+                  spreadRadius: -5,
+                ),
+              ],
       ),
       child: Column(
         children: [
@@ -39,23 +52,21 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
                 children: [
                   Text(
                     'تقدمك هذا الأسبوع',
-                    style:
-                        AppStyles.textRegular14(
-                          context,
-                        ).copyWith(
-                          color: const Color(
-                            0xFF6B6B6B,
-                          ),
-                        ),
+                    style: AppStyles.textRegular14(context).copyWith(
+                      color: isDark
+                          ? const Color(0xFF9E9E9B) // رمادي فاتح للدارك
+                          : const Color(0xFF6B6B6B),
+                    ),
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
+                  const SizedBox(height: 4),
                   Text(
                     '5 دروس',
-                    style: AppStyles.textMedium24(
-                      context,
-                    ).copyWith(color: const Color(0xFF1A1A1A), height: 1.33),
+                    style: AppStyles.textMedium24(context).copyWith(
+                      color: isDark
+                          ? const Color(0xFFF2F2F0) // أبيض مريح
+                          : const Color(0xFF1A1A1A),
+                      height: 1.33,
+                    ),
                   ),
                 ],
               ),
@@ -64,22 +75,26 @@ class QuranLearningViewHeaderBody extends StatelessWidget {
                 children: [
                   Text(
                     '78%',
-                    style: AppStyles.textRegular30(context),
+                    style: AppStyles.textRegular30(context).copyWith(
+                      color: isDark
+                          ? const Color(0xFFF2F2F0)
+                          : const Color(0xFF1A1A1A),
+                    ),
                   ),
                   Text(
                     'مكتمل',
                     style: AppStyles.textRegular14(context).copyWith(
-                      color: const Color(0xFF6B6B6B),
+                      color: isDark
+                          ? const Color(0xFF9E9E9B)
+                          : const Color(0xFF6B6B6B),
                     ),
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(
-            height: 30,
-          ),
-          CustomSlider(
+          const SizedBox(height: 30),
+          const CustomSlider(
             max: 100,
             value: 67,
           ),

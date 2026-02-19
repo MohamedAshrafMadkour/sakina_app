@@ -7,39 +7,38 @@ class AdviceMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomBackgroundIcon(
+        const CustomBackgroundIcon(
           icon: Icons.lightbulb_outline,
         ),
-        SizedBox(
-          width: 16,
-        ),
+        const SizedBox(width: 16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'نصيحة',
-                style: AppStyles.textMedium18(
-                  context,
-                ).copyWith(color: Colors.black),
+                style: AppStyles.textMedium18(context).copyWith(
+                  color: isDark ? const Color(0xFFF2F2F0) : Colors.black,
+                ),
               ),
-              SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Text(
                 'المداومة على الأذكار اليومية تجلب السكينة والطمأنينة للقلب. احرص على تفعيل التذكيرات لتبقى على اتصال دائم بالله.',
                 textAlign: TextAlign.right,
                 maxLines: 7,
-                style:
-                    AppStyles.textRegular14(
-                      context,
-                    ).copyWith(
-                      color: Color(0xFF6B6B6B),
-                      height: 1.63,
-                    ),
+                style: AppStyles.textRegular14(context).copyWith(
+                  color: isDark
+                      ? const Color(
+                          0xFFD6C9A3,
+                        ) // بيج فاتح مريح على الخلفية الغامقة
+                      : const Color(0xFF6B6B6B),
+                  height: 1.63,
+                ),
               ),
             ],
           ),

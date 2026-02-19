@@ -22,8 +22,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const LocationPermissionView());
     case AppRoutes.azkarView:
       return MaterialPageRoute(builder: (_) => const AzkarView());
-    case AppRoutes.azkarDetailsView:
-      return MaterialPageRoute(builder: (_) => const AzkarDetailsView());
+
     case AppRoutes.quranLearningView:
       return MaterialPageRoute(builder: (_) => const QuranLearningView());
     case AppRoutes.reminderView:

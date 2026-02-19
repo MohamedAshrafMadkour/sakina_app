@@ -10,22 +10,34 @@ class ReminderReview extends StatelessWidget {
     required this.colors,
     super.key,
   });
+
   final String title, time;
   final List<Color> colors;
   final IconData icon;
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: ShapeDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: const [Color(0xFFE8F5F1), Color(0xFFF4E5C2)],
-        ),
+        gradient: isDark
+            ? const LinearGradient(
+                colors: [
+                  Color(0xFF2A2926),
+                  Color(0xFF1F1F1C),
+                ],
+              )
+            : const LinearGradient(
+                colors: [
+                  Color(0xFFE8F5F1),
+                  Color(0xFFF4E5C2),
+                ],
+              ),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: const Color(0x4C0C7E5E),
+            color: isDark ? const Color(0x1AFFFFFF) : const Color(0x4C0C7E5E),
           ),
           borderRadius: BorderRadius.circular(20),
         ),
@@ -36,48 +48,44 @@ class ReminderReview extends StatelessWidget {
           Text(
             'معاينة التذكير',
             style: AppStyles.textRegular12(context).copyWith(
-              color: const Color(0xFF6B6B6B),
+              color: isDark ? const Color(0xFF9E9E9B) : const Color(0xFF6B6B6B),
             ),
           ),
-          SizedBox(
-            height: 36,
-          ),
+          const SizedBox(height: 24),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ReminderItemIcon(
                 colorsList: colors,
                 icon: icon,
               ),
-              SizedBox(
-                width: 12,
-              ),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
-                      style: AppStyles.textRegular16(
-                        context,
-                      ).copyWith(height: 1.25),
+                      style: AppStyles.textRegular16(context).copyWith(
+                        color: isDark
+                            ? const Color(0xFFF2F2F0)
+                            : const Color(0xFF1A1A1A),
+                      ),
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          '$time ',
+                          time,
                           style: AppStyles.textRegular12(context).copyWith(
-                            color: const Color(0xFF6B6B6B),
+                            color: const Color(0xFF9E9E9B),
                           ),
                         ),
-                        Icon(
+                        const SizedBox(width: 4),
+                        const Icon(
                           Icons.alarm,
                           size: 12,
-                          color: const Color(0xFF6B6B6B),
+                          color: Color(0xFF9E9E9B),
                         ),
                       ],
                     ),

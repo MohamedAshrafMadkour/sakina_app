@@ -6,28 +6,32 @@ class ChoseIconItem extends StatelessWidget {
     required this.isSelected,
     super.key,
   });
+
   final bool isSelected;
   final IconData icon;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.sizeOf(context).height * .0515021459227468,
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    return Container(
       decoration: ShapeDecoration(
-        color: isSelected ? const Color(0x190D7E5E) : Colors.white,
+        color: isSelected
+            ? const Color(0x190D7E5E)
+            : (isDark ? const Color(0xFF242421) : Colors.white),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            width: 2,
+            width: 1.5,
             color: isSelected
                 ? const Color(0xFF0D7E5E)
-                : const Color(0x1E0D7E5E),
+                : (isDark ? const Color(0x1AFFFFFF) : const Color(0x1E0D7E5E)),
           ),
           borderRadius: BorderRadius.circular(20),
         ),
       ),
       child: Icon(
         icon,
-        // color: Color(0xff1A1A1A),
+        color: isDark ? const Color(0xFFF2F2F0) : const Color(0xFF1A1A1A),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sakina_app/core/constants/app_colors/dark_app_colors.dart';
 import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/features/azkar/data/models/counter_model.dart';
 import 'package:sakina_app/features/azkar/presentation/views/widgets/appbar_header.dart';
@@ -14,6 +15,8 @@ class CustomAppbar extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 50),
       //  alignment: Alignment.topCenter,
@@ -21,10 +24,15 @@ class CustomAppbar extends StatelessWidget {
 
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: const [
-            LightAppColors.appbarBackground1,
-            LightAppColors.appbarBackground2,
-          ],
+          colors: isDark
+              ? const [
+                  DarkAppColors.darkAppbarBackground1,
+                  DarkAppColors.darkAppbarBackground2,
+                ]
+              : const [
+                  LightAppColors.appbarBackground1,
+                  LightAppColors.appbarBackground2,
+                ],
           begin: Alignment.bottomRight,
           end: Alignment.bottomLeft,
         ),

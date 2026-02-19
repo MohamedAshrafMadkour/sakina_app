@@ -4,19 +4,30 @@ import 'package:sakina_app/features/Quran_learning/data/models/all_courses_model
 import 'package:sakina_app/features/Quran_learning/presentation/views/widgets/all_courses_item_body.dart';
 
 class AllCoursesItem extends StatelessWidget {
-  const AllCoursesItem({required this.allCoursesModel, super.key});
+  const AllCoursesItem({
+    required this.allCoursesModel,
+    super.key,
+  });
+
   final AllCoursesModel allCoursesModel;
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Opacity(
       opacity: allCoursesModel.isLocked ? 0.6 : 1,
       child: Container(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: isDark
+              ? const Color(0xFF242421) // Card Dark
+              : Colors.white,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: const Color(0x1E0D7E5E),
+              color: isDark
+                  ? const Color(0x1AFFFFFF) // subtle border
+                  : const Color(0x1E0D7E5E),
             ),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -24,23 +35,17 @@ class AllCoursesItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: 20,
-            ),
-            (allCoursesModel.isLocked)
-                ? LockedAllCoursePlayIcon()
-                : unLockedAllCoursePlayIcon(),
-            SizedBox(
-              width: 16,
-            ),
+            const SizedBox(width: 20),
+            allCoursesModel.isLocked
+                ? const LockedAllCoursePlayIcon()
+                : const UnLockedAllCoursePlayIcon(),
+            const SizedBox(width: 16),
             Expanded(
               child: AllCoursesItemBody(
                 allCoursesModel: allCoursesModel,
               ),
             ),
-            SizedBox(
-              width: 20,
-            ),
+            const SizedBox(width: 20),
           ],
         ),
       ),
@@ -48,39 +53,52 @@ class AllCoursesItem extends StatelessWidget {
   }
 }
 
-class unLockedAllCoursePlayIcon extends StatelessWidget {
-  const unLockedAllCoursePlayIcon({super.key});
+class UnLockedAllCoursePlayIcon extends StatelessWidget {
+  const UnLockedAllCoursePlayIcon({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: MediaQuery.sizeOf(context).width * .1302325581395349,
       height: MediaQuery.sizeOf(context).height * .0600858369098712,
       decoration: ShapeDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment(0.50, 0.00),
           end: Alignment(0.50, 1.00),
-          colors: const [Color(0xFFD4AF37), Color(0xFFC4941F)],
+          colors: [
+            Color(0xFFD4AF37),
+            Color(0xFFC4941F),
+          ],
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 4,
-            offset: Offset(0, 2),
-            spreadRadius: -2,
-          ),
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 6,
-            offset: Offset(0, 4),
-            spreadRadius: -1,
-          ),
-        ],
+        shadows: isDark
+            ? [
+                const BoxShadow(
+                  color: Color(0x33000000),
+                  blurRadius: 12,
+                  offset: Offset(0, 6),
+                ),
+              ]
+            : const [
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 2),
+                  spreadRadius: -2,
+                ),
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 6,
+                  offset: Offset(0, 4),
+                  spreadRadius: -1,
+                ),
+              ],
       ),
-      child: Icon(
+      child: const Icon(
         Icons.play_arrow_outlined,
         color: Colors.white,
         size: 34,
@@ -94,32 +112,45 @@ class LockedAllCoursePlayIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       width: MediaQuery.sizeOf(context).width * .1302325581395349,
       height: MediaQuery.sizeOf(context).height * .0600858369098712,
       decoration: ShapeDecoration(
-        color: const Color(0xFFE8E6E1),
+        color: isDark
+            ? const Color(0xFF2E2E2C) // بدل الرمادي الفاتح
+            : const Color(0xFFE8E6E1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 4,
-            offset: Offset(0, 2),
-            spreadRadius: -2,
-          ),
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 6,
-            offset: Offset(0, 4),
-            spreadRadius: -1,
-          ),
-        ],
+        shadows: isDark
+            ? [
+                const BoxShadow(
+                  color: Color(0x33000000),
+                  blurRadius: 12,
+                  offset: Offset(0, 6),
+                ),
+              ]
+            : const [
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 2),
+                  spreadRadius: -2,
+                ),
+                BoxShadow(
+                  color: Color(0x19000000),
+                  blurRadius: 6,
+                  offset: Offset(0, 4),
+                  spreadRadius: -1,
+                ),
+              ],
       ),
       child: Image.asset(
         AppIcons.iconsLock,
+        color: isDark ? const Color(0xFF9E9E9B) : null,
       ),
     );
   }

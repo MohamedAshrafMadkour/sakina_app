@@ -52,62 +52,47 @@ class _TimePickerFieldState extends State<TimePickerField> {
   @override
   Widget build(BuildContext context) {
     final bool isSelected = selectedTime != null;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: pickTime,
-        borderRadius: BorderRadius.circular(16),
-        splashColor: const Color(0x220A6349),
-
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          curve: Curves.easeInOut,
-
-          height: 56,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-
-            border: Border.all(
+    return InkWell(
+      onTap: pickTime,
+      borderRadius: BorderRadius.circular(16),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        height: 56,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: isDark ? const Color(0xFF242421) : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: isSelected
+                ? const Color(0xFF0A6349)
+                : (isDark ? const Color(0x1AFFFFFF) : const Color(0x1E0A6349)),
+            width: 1.5,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.access_time,
               color: isSelected
                   ? const Color(0xFF0A6349)
-                  : const Color(0x1E0A6349),
-              width: 1.5,
+                  : const Color(0xFF9E9E9B),
             ),
-
-            boxShadow: isSelected
-                ? [
-                    BoxShadow(
-                      color: const Color(0x220A6349),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : [],
-          ),
-
-          child: Row(
-            children: [
-              Icon(
-                Icons.access_time,
-                color: isSelected ? const Color(0xFF0A6349) : Colors.grey,
+            const SizedBox(width: 12),
+            Text(
+              selectedTime != null
+                  ? selectedTime!.format(context)
+                  : 'اختر الوقت',
+              style: TextStyle(
+                color: isSelected
+                    ? (isDark ? const Color(0xFFF2F2F0) : Colors.black)
+                    : const Color(0xFF9E9E9B),
+                fontSize: 16,
               ),
-              const SizedBox(width: 12),
-              Text(
-                selectedTime != null
-                    ? selectedTime!.format(context)
-                    : 'اختر الوقت',
-                style: TextStyle(
-                  color: isSelected ? Colors.black : Colors.grey,
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

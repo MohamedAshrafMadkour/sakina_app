@@ -4,9 +4,9 @@ import 'package:sakina_app/core/constants/app_colors/light_app_colors.dart';
 import 'package:sakina_app/core/constants/app_images/app_icons/app_icons.dart';
 import 'package:sakina_app/core/constants/app_routes.dart';
 import 'package:sakina_app/core/constants/styles/app_styles.dart';
-import 'package:sakina_app/core/widgets/app_background.dart';
-import 'package:sakina_app/core/widgets/custom_button.dart';
-import 'package:sakina_app/core/widgets/custom_image_container.dart';
+import 'package:sakina_app/core/utils/widgets/app_background.dart';
+import 'package:sakina_app/core/utils/widgets/custom_button.dart';
+import 'package:sakina_app/core/utils/widgets/custom_image_container.dart';
 import 'package:sakina_app/features/location_permission/presentation/views/widgets/custom_location_list_view.dart';
 import 'package:sakina_app/l10n/app_localizations.dart';
 

@@ -211,16 +211,18 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
 }
 
 class LableText extends StatelessWidget {
-  const LableText({
-    required this.text,
-    super.key,
-  });
+  const LableText({required this.text, super.key});
   final String text;
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Text(
       text,
-      style: AppStyles.textMedium14(context),
+      style: AppStyles.textMedium14(context).copyWith(
+        color: isDark ? const Color(0xFFF2F2F0) : const Color(0xFF1A1A1A),
+      ),
     );
   }
 }
@@ -230,13 +232,13 @@ class CloseIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return GestureDetector(
-      onTap: () {
-        Navigator.pop(context);
-      },
+      onTap: () => Navigator.pop(context),
       child: Icon(
         Icons.close,
-        color: Color(0xff1A1A1A),
+        color: isDark ? const Color(0xFFF2F2F0) : const Color(0xff1A1A1A),
       ),
     );
   }
